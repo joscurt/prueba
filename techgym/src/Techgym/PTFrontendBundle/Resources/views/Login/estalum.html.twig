@@ -1,0 +1,157 @@
+
+{% block body %}
+
+    <!--{% if app.user %}
+    {{ app.user.username }}
+    {{ app.user.imagenpt }}si esta Logueado
+    {% else %}
+        # user is not logged in
+        {% endif %}-->
+
+            <div class="block block-drop-shadow">
+                <div class="head bg-default bg-light-ltr">
+                    <h2>Total Alumnos 2016</h2>
+                    <div class="side pull-right">                            
+                        <ul class="buttons">                                
+                            <li><a href="#"><span class="icon-cogs"></span></a></li>
+                        </ul>
+                    </div>                        
+                    <div class="head-panel nm">
+                        <div class="left_abs_100" style="margin-top: 20px;">
+                            <div class="knob">
+                                <input class="dial" type="text" data-fgColor="#FFFFFF" data-min="0" 
+                                       data-max="200" data-width="100" data-height="100" 
+                                       value="{% set arr_size = usertotal|length %}{{arr_size}}" data-readOnly="true"/>
+                            </div>  
+                        </div>
+                        <div class="chart" id="dash_chart_1" style="height: 150px;"></div>
+                    </div>
+                    <div class="head-panel nm">
+                        <div class="hp-info pull-left">
+                            <div class="hp-icon">
+                                <span class="icon-thumbs-up-alt"></span>
+                            </div>
+                            <span class="hp-main">{% set arr_size = useract|length %}
+                    {{arr_size}}</span>
+                            <span class="hp-sm">Activos</span>
+                        </div>
+                        <div class="hp-info pull-left">
+                            <div class="hp-icon">
+                                <span class="icon-thumbs-down-alt"></span>
+                            </div>                                
+                            <span class="hp-main">{% set arr_size = useract2|length %}
+                    {{arr_size}}</span>
+                            <span class="hp-sm">Inactivos</span>
+                        </div>                                                        
+                                             
+                    </div>
+                </div>
+                <div class="content list">     
+                    <div class="list-title">
+                        Meses Siguientes
+                    </div>
+                    <div class="list-item tip" data-original-title="{% set arr_size2 = userago|length %}{{arr_size2}}">
+                        <div class="list-text">
+                            <strong>Agosto</strong>
+                            <div class="progress progress-small">
+                                <div class="progress-bar progress-bar-info" role="progressbar"  style="width: {% set arr_size2 = userago|length %}{{arr_size2}}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-item tip" data-original-title="{% set arr_size2 = usersep|length %}{{arr_size2}}">                                
+                        <div class="list-text">
+                            <strong>Septiembre</strong>
+                            <div class="progress progress-small">
+                                <div class="progress-bar progress-bar-info " role="progressbar" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100"  style="width: {% set arr_size2 = usersep|length %}{{arr_size2}}%"></div>
+                            </div>                                
+                        </div>                                
+                    </div>                            
+                    <div class="list-item tip" data-original-title="{% set arr_size2 = useroct|length %}{{arr_size2}}">
+                        <div class="list-text">
+                            <strong>Octubre</strong>
+                            <div class="progress progress-small">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100" style="width: {% set arr_size2 = useroct|length %}{{arr_size2}}%"></div>
+                            </div>                                
+                        </div>                                
+                    </div>                                                    
+                    <div class="list-item tip" data-original-title="{% set arr_size2 = usernov|length %}{{arr_size2}}">
+                        <div class="list-text">
+                            <strong>Noviembre</strong>
+                            <div class="progress progress-small">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: {% set arr_size2 = usernov|length %}{{arr_size2}}%"></div>
+                            </div>                                
+                        </div>                                
+                    </div>
+                    <div class="list-item tip" data-original-title="{% set arr_size2 = userdic|length %}{{arr_size2}}">
+                        <div class="list-text">
+                            <strong>Diciembre</strong>
+                            <div class="progress progress-small">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100" style="width: {% set arr_size2 = userdic|length %}{{arr_size2}}%"></div>
+                            </div>                                
+                        </div>                                
+                    </div>
+                </div>
+                <div class="footer footer-defaut tac">
+                    <div class="pull-left" style="width: 200px;">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="icon-calendar"></span></div>
+                            <input type="text" class="datepicker form-control" value="10/08/2013"/>
+                            <div class="input-group-btn"><button class="btn"><span class="icon-search"></span></button></div>
+                        </div>                                                        
+                    </div>
+                    <div class="pull-right">
+                        <a href="#">Más información...</a>
+                    </div>
+                </div>
+
+                <!--<div class="content list">
+                    
+                    
+
+                    {% for alumno in user2|slice(0, 6) %}
+                        <div class="list-item">
+                            <div class="list-datetime">
+                                <div class="date">{{ alumno.creacionalum | date('d.m') }}</div>
+                                <div class="time">{{ alumno.creacionalum | date('Y') }}</div>
+                            </div>
+                            <div class="list-info">
+                                <img src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ alumno.imagenalumno) }}" class="img-circle img-thumbnail"/>
+                            </div>
+                            <div class="list-text">
+                                <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ alumno.id }}" class="list-text-name">{{ alumno.nombre }} {{ alumno.apellidos }}</a>
+                                <p><div class="list-text-info"><i class="icon-envelope"></i> <a href="mailto:{{ alumno.email }}">{{ alumno.email }}</a> &nbsp;<i class="icon-phone"></i>&nbsp;+9(876) 543-2109 <i class="icon-phone-sign"></i> +9(876) 543-2109</div></p>
+                            </div>
+                            <div class="list-controls">
+                                <a href="{{path('techgym_pt_frontend_alumno_editar', { id:alumno.id })}}" class="widget-icon widget-icon-circle"><span class="icon-edit"></span></a>
+                                <a href="{{path('techgym_pt_frontend_ver_evaluacion', { id:alumno.id })}}" class="widget-icon widget-icon-circle"><span class="icon-file-text-alt"></span></a>
+                                <a href="#" class="widget-icon widget-icon-circle"><span class="icon-remove"></span></a>
+                            </div>                            
+                        </div>
+                    {%endfor%}
+                </div>-->
+
+            </div> 
+            <script>
+
+                $(document).ready(function(){
+                if ($("#dash_chart_1").length > 0){
+
+                var data = [ [1,{% set arr_size2 = userene|length %}{{arr_size2}}], [2,{% set arr_size2 = userfeb|length %}{{arr_size2}}], [3, {% set arr_size2 = usermar|length %}{{arr_size2}}], [4, {% set arr_size2 = userabr|length %}{{arr_size2}}], [5, {% set arr_size2 = usermay|length %}{{arr_size2}}], [6, {% set arr_size2 = userjun|length %}{{arr_size2}}], [7, {% set arr_size2 = userjul|length %}{{arr_size2}}] ];
+                        var dash_chart_1 = $.plot($("#dash_chart_1"), [{ data: data, label: "Inscritos"}], {
+                        series: {lines: { show: true }, points: { show: true }},
+                                grid: { hoverable: true, clickable: true, margin: {left: 110}},
+                                xaxis: {ticks: [[1, 'Ene'], [2, 'Feb'], [3, 'Mar'], [4, 'Abr'], [5, 'May'], [6, 'Jun'], [7, 'Jul']]},
+                                legend: {show: false}});
+                }});
+
+            </script>
+            <script>
+    $(function() {
+  $(".knob input").knob();
+           
+});
+  
+    
+</script>
+
+            {% endblock %}

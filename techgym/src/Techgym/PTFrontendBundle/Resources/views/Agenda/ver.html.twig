@@ -1,0 +1,152 @@
+{% block body %}
+
+    {% block stylesheets %}    
+
+        <link rel="stylesheet" type="text/css" href={{ asset('bundles/techgymptfrontend/css/tooltipster.bundle.min.css')}} />
+ <link rel="stylesheet" type="text/css" href={{ asset('bundles/techgymptfrontend/css/clock.css')}} />
+
+    {% endblock %}
+
+    {% block javascripts %}   
+
+        <script type="text/javascript" src={{ asset('bundles/techgymptfrontend/js/tooltipster.bundle.min.js')}}></script>
+        <script>
+            $(document).ready(function () {
+                $('.tooltipalu').tooltipster(
+                        {
+                            //content: $('#tooltip_content'),
+                            theme: 'tooltipster-noir',
+                            contentCloning: true,
+                            animation: 'swing',
+                            delay: 200,
+                            side: 'right',
+                            //trigger: 'click'
+                        }
+                );
+            });
+
+        </script>
+        <script type="text/javascript">
+$(document).ready(function() {
+// Create two variable with the names of the months and days in an array
+var monthNames = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]; 
+var dayNames= ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"]
+
+// Create a newDate() object
+var newDate = new Date();
+// Extract the current date from Date object
+newDate.setDate(newDate.getDate());
+// Output the day, date, month and year   
+$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+
+setInterval( function() {
+	// Create a newDate() object and extract the seconds of the current time on the visitor's
+	var seconds = new Date().getSeconds();
+	// Add a leading zero to seconds value
+	$("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+	},1000);
+	
+setInterval( function() {
+	// Create a newDate() object and extract the minutes of the current time on the visitor's
+	var minutes = new Date().getMinutes();
+	// Add a leading zero to the minutes value
+	$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+    },1000);
+	
+setInterval( function() {
+	// Create a newDate() object and extract the hours of the current time on the visitor's
+	var hours = new Date().getHours();
+	// Add a leading zero to the hours value
+	$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+    }, 1000);	
+});
+</script>
+        <script type='text/javascript' src={{asset('bundles/techgymptfrontend/js/plugins/fullcalendar/moment.min.js')}}></script>
+        <script type='text/javascript' src={{asset('bundles/techgymptfrontend/js/plugins/fullcalendar/fullcalendar.min.js')}}></script>
+       
+
+    {% endblock %}
+
+
+    <div class="block block-drop-shadow">
+        <div class="header">
+            <h2>Agendados Hoy </h2>
+        </div>
+
+        <div class="content list">  
+            {% for agendas in agenda %}
+                {% if 'now'|date_modify("-5 hour")|date('d-m-Y') == agendas.fecha | date('d-m-Y')%}
+                    {% set a = 'now'|date_modify("-5 hour")|date('H') %}
+
+                    {% set b = 'now'|date('i') %}
+                    {% set c = a~b %}
+                    
+                    {% if c <= agendas.fecha | date('Hi') %}
+                        {% set size = agendas | length %}
+
+                        <div class="tooltipalu list-item" data-tooltip-content="#tooltip_content{{agendas.id}}">                                
+                            <div class="list-datetime">
+                                <div class="time">{{ agendas.fecha | date('H:iA') }}</div>
+                            </div>                            
+                            <div style="font-size: 11px;" class="list-text">{{agendas.alumno.nombre|default('-')}} {{agendas.alumno.apellidos|default('-')}}</div>                                
+                            <div class="tooltip_templates">
+                                <span id="tooltip_content{{agendas.id}}">
+                                    <div class="list-item">                                
+                                        <div style="text-align:center;" class="list-info">
+                                            <img style="width:70px;text-align:center;"src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ agendas.alumno.imagenalumno) }}" class="img-circle img-thumbnail">
+                                        </div>                                                            
+                                        <div class="list-text">
+                                            <span class="list-text-name"><strong>{{agendas.alumno.nombre|default('-')}} {{agendas.alumno.apellidos|default('-')}}</strong></span>
+                                            <div class="list-text-info"><i class="icon-calendar"></i> <strong>Fecha:</strong> {{ agendas.fecha | date('d-m-Y') }}</div>
+                                            <div class="list-text-info"><i class="icon-time"></i> <strong>Hora:</strong> {{ agendas.fecha | date('H:i A') }}</div>
+                                            <div class="list-text-info"><i class="icon-home"></i> <strong>Gym:</strong> {{ agendas.alumno.gimnasio | default('-') }}</div>
+                                        </div>  </div> 
+                                </span>
+                            </div>
+                        </div>
+
+                        {% if size == 0 %}
+                            <div class="list-item">   
+                                <div style="font-size: 11px;" class="list-text">No hay Alumnos Agendados hoy.</div> 
+                            </div>
+                        {%endif%}
+                    {%endif%}          
+                {%endif%}
+
+
+            {%endfor%}  
+        </div>
+<div class="footer tac">
+    <span class="icon-calendar"></span>
+                        <a style="text-shadow:1px 1px 1px rgba(0,0,0,0.5);" href="{{path('techgym_agenda_calendario') }}">  Calendario completo</a>
+                    </div>
+    </div>
+
+
+<div class="clock">
+<div id="Date"></div>
+  <ul>
+      <li id="hours"></li>
+      <li id="point">:</li>
+      <li id="min"></li>
+      <li id="point">:</li>
+      <li id="sec"></li>
+  </ul>
+</div>
+
+
+    <!-- {% set a = 'now'|date('H')-5 %}{{a}}
+     <br />
+    {% set b = 'now'|date('i') %}{{b}}
+    {% set c = a~b %}-> concateno 2 variables
+    <br />
+    {{c}}
+     <br />
+    {{'now'|date_modify("-4 hour")|date('d-m-Y H:i A')}}-->
+
+
+
+
+
+
+{% endblock %}

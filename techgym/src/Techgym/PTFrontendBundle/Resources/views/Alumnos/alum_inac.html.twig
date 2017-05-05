@@ -1,0 +1,89 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+    <div class="row">
+        <div class="col-md-10">
+            {{ parent() }}
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesCorrectos.html.twig' %} 
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesNoCorrectos.html.twig' %} 
+
+            <div class="block">
+                <div class="header">
+                    <h2>Alumnos Inactivos</h2>
+
+
+                </div>
+
+                <div class="content">
+                      <table class="table table-bordered table-striped sortable_simple">
+                        <thead>
+                            <tr>                                                    
+                                <th >Ver</th>
+                                <th >Imagen</th>
+                                <th >Nombre</th>                                                    
+                                <th >Email</th>
+                                <th width="95">Inscripcion</th>
+                                <th >Accion</th>                                     
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for alumno in alumnos %}
+                                <tr data-id={{alumno.id}}>
+                                    <td>
+                                        <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ alumno.id }}"><i class="-alt fa fa-2x fa-eye fa-fw"></i></a>
+                                    </td>
+                                    <td>
+
+                                        <img src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ alumno.imagenalumno) }}" class="img-circle img-thumbnail" width="50">
+                                    </td>
+                                    <td>
+                                        <span>
+                                            <b>{{ alumno.nombre }}</b>
+                                            {{ alumno.apellidos }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="mailto:{{ alumno.email }}">{{ alumno.email }}</a>
+                                    </td>
+                                    <td>{{ alumno.creacionalum | date('d-m-Y') }}</td>
+                                    <td>
+                                        <div class="btn-group">
+
+
+                                            <button class="btn btn-danger" value="left" type="button">
+                                                <i class="fa fa-fw s fa-remove"></i>Eliminar</button>
+                                                
+                                            <a class="btn btn-info" href="{{path('techgym_pt_frontend_alumno_editar', { id:alumno.id })}}">
+
+                                                <i class="icon-edit"></i>Editar</a>
+                                            <a class="btn btn-success" href="{{path('techgym_pt_frontend_ver_evaluacion', { id:alumno.id })}}">    
+
+                                                <i class="icon-file-text-alt"></i>Evaluacion</a>
+                                            <button class="btn btn-warning" value="right" type="button">
+                                                <i class="icon-bar-chart"></i>Rutina</button>
+                                                
+                                                 <button class="btn btn-primary active2" value="left" type="button">
+                                                <i class="fa fa-fw s fa-remove"></i>Activar</button>
+                                                
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{include('TechgymPTFrontendBundle:Login:borrar/active2.html.twig', {form:active2_form_ajax,message:'¿Éstas Seguro de volver a Activar al Alumno?', id: 'form-delete2', with_submit:false})}}
+{{include('TechgymPTFrontendBundle:Login:borrar/borrar.html.twig', {form:eliminar_form_ajax,message:'¿Éstas Seguro de Eliminar al Alumno?', id: 'form-delete', with_submit:false})}}
+
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script type='text/javascript' src="{{asset('bundles/techgymptfrontend/js/borrar.js')}}"></script>  
+{% endblock %}

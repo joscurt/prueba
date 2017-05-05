@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Bienvenidos!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+            <!-- Latest compiled and minified CSS -->
+            <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+            <!-- Optional theme -->
+            <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+            <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">  
+            <link href="{{ asset('bundles/techgymptfrontend/css/template.css') }}" rel="stylesheet">
+            <link href="{{ asset('bundles/techgymptfrontend/css/cropper.min.css') }}" rel='stylesheet' type='text/css'>
+ <!--<link href="{{ asset('bundles/techgymptfrontend/css/panda.css') }}" rel='stylesheet' type='text/css'>-->
+        {% endblock %}
+        {% block javascripts %}
+            <!-- Latest compiled and minified JavaScript -->
+            <!--<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+            <script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/jquery.min.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/jquery-ui.min.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/jquery-migrate.min.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/globalize.js') }}></script>    
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/bootstrap/bootstrap.min.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/uniform/jquery.uniform.min.js') }}></script>
+
+
+
+
+
+
+        {% endblock %}
+    </head>
+    <body class="a">
+        <div class="container">
+            {% block body %}     
+            {% endblock %} 
+        </div>
+
+    </body>
+    <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/knob/jquery.knob.js') }}></script>
+    <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/sparkline/jquery.sparkline.min.js') }}></script>
+
+    <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/flot/jquery.flot.js') }}></script>
+    <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/flot/jquery.flot.pie.js') }}></script>    
+    <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/flot/jquery.flot.resize.js') }}></script>
+    <!--<script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins.js')}}></script>   -->          
+    <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/actions.js') }}></script> 
+    <script type='text/javascript' src="http://localhost/techgym/assets/js/demo_edit_profile.js"></script>
+    <script type='text/javascript' src="http://localhost/techgym/assets/js/jquery.form.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <!--<script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/index.js') }}></script> -->
+    <style>
+
+        @-webkit-keyframes fade {
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes fade {
+            to {
+                opacity: 1;
+            }
+        }
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            -webkit-transition: 5s ease-in-out;
+            transition: 1s ease-in-out;
+        }
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            -webkit-animation: fade 3s alternate infinite;
+            animation: fade 3s alternate infinite;
+        }
+
+        @keyframes fade {
+            to {opacity: 1;}
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+            transition: 1s ease-in-out;
+            &::after {
+                content: '';
+                position: absolute;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+                opacity: 0;
+                animation: fade 3s alternate infinite;
+            }
+        }
+    </style>
+    <script>
+        (function () {
+            'use strict';
+
+            // utilitiy
+            var randum = function (max) {
+                return Math.round(Math.random() * max);
+            }
+            var hexify = function (x) {
+                return ('0' + parseInt(x).toString(16)).slice(-2);
+            }
+            var randex = function () {
+                return '#' + hexify(randum(255)) + hexify(randum(255)) + hexify(randum(255));
+            };
+
+            var blender = function (c1, c2) {
+                var p1 = randum(100),
+                        p2 = randum(100),
+                        deg = randum(360),
+                        mode = Math.round(Math.random());
+                c1 = c1 || randex();
+                c2 = c2 || randex();
+                return {
+                    blend: (mode > 0 ? 'radial-gradient(circle at ' + p1 + '% ' + p2 + '%, ' + c1 + ', ' + c2 + ')' : 'linear-gradient(' + deg + 'deg, ' + c1 + ', ' + c2 + ')'),
+                    c1: c1,
+                    c2: c2
+                };
+            };
+
+            // needed for transitioning the blends
+            var a = blender();
+            var b = blender(a.c1);
+            var style = document.createElement('style');
+            var body = document.querySelector('body');
+            var createStyles = function (style, a, b) {
+                style.innerHTML = ''
+                style.innerHTML += '.a {background: ' + a.blend + '}';
+                style.innerHTML += '.a::after {background: ' + b.blend + '}';
+            };
+
+            body.appendChild(style);
+
+            createStyles(style, a, b);
+
+            var bgTime = setInterval(function () {
+                // a = blender();
+                b = blender();
+                createStyles(style, a, b);
+            }, 6000);
+
+        })();
+    </script>
+</html>

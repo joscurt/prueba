@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/techgym/UPGRADE-2.4.md</file>
+            <file>file:/C:/xampp/htdocs/techgym/web/bundles/techgymptfrontend/css/stylesheet.css</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Evaluacion/agregaevaluacion.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Login/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Rutina/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Entity/Alumno.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Form/Type/RegistroAlumnoType.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/TechgymPTFrontendBundle.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/README.md</file>
+            <file>file:/C:/xampp/htdocs/techgym/web/bundles/techgymptfrontend/css/mystyles.css</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Repository/AlumnoRepository.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Controller/EvaluacionController.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Form/Type/RegistroType.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Entity/Evaluacion.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Evaluacion/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Alumnos/ver.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Services/Registro_1.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Alumnos/agregaalumno.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Controller/RutinaController.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Controller/LoginController.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Alumnos/alum_inac.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Login/borrar/borrar.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Controller/DefaultController.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Controller/PersonalTrainerController.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Services/Update.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Rutina/galeria.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Login/estalum.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/views/Alumnos/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Form/Type/RegistroEvaluacionType.php</file>
+            <file>file:/C:/xampp/htdocs/techgym/web/bundles/techgymptfrontend/js/pruebas.js</file>
+            <file>file:/C:/xampp/htdocs/techgym/src/Techgym/PTFrontendBundle/Resources/config/services.yml</file>
+        </group>
+    </open-files>
+</project-private>

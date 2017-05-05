@@ -1,0 +1,153 @@
+techgym_pt_frontend_homepage:
+    path:     /
+    defaults: { _controller: TechgymPTFrontendBundle:Login:index }
+    requirements:
+        _method:  GET
+    
+techgym_pt_frontend_registro:
+    path:     /registro
+    defaults: { _controller: TechgymPTFrontendBundle:Login:registro }
+    
+techgym_pt_activar_cuenta:
+     pattern:  /activar/{token}
+     defaults: { _controller: TechgymPTFrontendBundle:Login:activar }
+
+techgym_pt_frontend_login:
+    path:     /login
+    defaults: { _controller: TechgymPTFrontendBundle:Login:login }
+    
+techgym_pt_login_check:
+     pattern: /login_check
+     
+techgym_pt_logout:
+        pattern: /logout
+        
+techgym_pt_frontend_alumnos:
+    path:     /alumnos
+    defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:damealumnos }
+    
+techgym_pt_frontend_alumnos_inac:
+    path:     /alumnos/inactivos
+    defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:aluminac }
+    
+techgym_pt_frontend_alumno:
+  pattern:  /alumnos/{id}
+  defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:ver } 
+  requirements:
+      
+techgym_pt_frontend_reg_alumnos:
+    path:     /agregaalumno
+    defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:agregaalumno }
+    
+techgym_pt_activar_cuenta_alumno:
+     pattern:  /activar/{token}
+     defaults: { _controller: TechgymPTFrontendBundle:Login:activaralumno }
+     
+     
+techgym_pt_frontend_alumno_editar:
+  pattern:  /editar/{id}
+  defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:editar } 
+  
+techgym_pt_frontend_alumno_editar_alumn_ruti:
+  pattern:  /editar/rutina/{id}
+  defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:editarruti }   
+
+  
+techgym_pt_frontend_alumno_eliminar:
+  pattern:  /eliminar/{id}
+  defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:eliminar }       
+  methods:  [POST, DELETE]
+  
+
+      
+techgym_pt_frontend_alumno_update:
+  pattern:  /update/{id}
+  defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:update } 
+  methods:  [POST, PUT]
+  
+techgym_pt_frontend_alumno_updated:
+  pattern:  /action/{id}
+  defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:action } 
+  methods:  [POST, PUT, DELETE]
+
+techgym_pt_frontend_alumno_updated2:
+  pattern:  /action2/{id}
+  defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:action2 } 
+  methods:  [POST, PUT]
+
+
+techgym_pt_frontend_redirect_edit:
+    path: /update/{id}
+    defaults:
+        _controller: TechgymPTFrontendBundle:PersonalTrainer:editar
+        path: /editar/{id}
+        permanent: true
+
+        
+techgym_pt_frontend_ver_evaluacion:
+    path:     /evaluacion/{id}
+    defaults: { _controller: TechgymPTFrontendBundle:Evaluacion:index } 
+    
+techgym_pt_frontend_ver_e:
+    path:     /evaluacion
+    defaults: { _controller: TechgymPTFrontendBundle:Evaluacion:index2 }    
+        
+techgym_pt_frontend_reg_evaluacion:
+    path:     /agregaevaluacion/{id}
+    defaults: { _controller: TechgymPTFrontendBundle:Evaluacion:agregaevaluacion }
+    
+techgym_pt_frontend_evaluacion_editar:
+  pattern:  /editarevaluacion/{id}
+  defaults: { _controller: TechgymPTFrontendBundle:PersonalTrainer:editar } 
+  
+techgym_pt_frontend_ver_rutina:
+    path:     /rutina/{id}
+    defaults: { _controller: TechgymPTFrontendBundle:Rutina:index } 
+
+techgym_pt_frontend_ver_rutina_auto:
+    path:     /rutina/automatica/{id}
+    defaults: { _controller: TechgymPTFrontendBundle:Rutina:automatica }     
+    
+techgym_pt_frontend_ver_img_rutina:
+    path:     /rutina/imagenes/{id}
+    defaults: { _controller: TechgymPTFrontendBundle:Rutina:imagenes }
+
+techgym_pt_frontend_ver_rutina_alumn:
+    path:     /ejercicios/rutina/{id}
+    defaults: { _controller: TechgymPTFrontendBundle:Rutina:ver }  
+    
+techgym_pt_frontend_ver_rutina_add:
+    path:     /rutina/add/add
+    defaults: { _controller: TechgymPTFrontendBundle:Rutina:add }
+    methods:  [POST, GET]
+    
+techgym_pt_frontend_ver_rutina_create:
+    path:     /rutina/add/create
+    defaults: { _controller: TechgymPTFrontendBundle:Rutina:create } 
+    methods:  POST
+    
+techgym_prueba:
+    path:     /default/index
+    defaults: { _controller: TechgymPTFrontendBundle:Default:index }
+
+techgym_agenda:
+    path:     /agenda
+    defaults: { _controller: TechgymPTFrontendBundle:Agenda:agenda }  
+
+techgym_producto:
+    path:     /agregaproducto
+    defaults: { _controller: TechgymPTFrontendBundle:Producto:producto }  
+   
+techgym_producto_ver:
+    path:     /producto/ver
+    defaults: { _controller: TechgymPTFrontendBundle:Producto:productover }   
+    
+    
+techgym_agenda_ver:
+    path:     /agenda/ver
+    defaults: { _controller: TechgymPTFrontendBundle:Agenda:agendaver }
+    
+   
+techgym_agenda_calendario:
+    path:     /agenda/calendario
+    defaults: { _controller: TechgymPTFrontendBundle:Agenda:agendacalendario } 

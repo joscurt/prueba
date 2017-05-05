@@ -1,0 +1,277 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
+    {% block stylesheets %}
+        {{ parent() }}
+        <link href="{{ asset('bundles/techgymptfrontend/css/rutinaauto.css') }}" rel="stylesheet">
+    {% endblock %} 
+   <div class="row">
+        <div class="col-md-10">
+
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesCorrectos.html.twig' %} 
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesNoCorrectos.html.twig' %}   
+
+            <div class="block">
+                <div class="header">
+                    <h2>Mis Alumnos</h2>
+                </div>
+                <div id="container">
+                    <div id="content" class="content">
+
+                        <div id="workoutfilters">
+                            <ul id="goal">
+
+                                <li>Objetivo del Entrenamiento</li>
+                                <li><a class="selected" href="javascript:void(0)" data-filter="*">Todas</a></li>
+                                <li><a href="javascript:void(0)" class="muscle-growth" data-filter=".muscle-growth"><span class="muscle-growth_filter_icon"><p>Crecimiento Muscular</p></span></a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="muscle-endurance" data-filter=".muscle-endurance"><span class="muscle-endurance_filter_icon"><p>Resistencia Muscular</p></span></a></li>
+                                <li><a href="javascript:void(0)" class="strength-endurance" data-filter=".strength-endurance"><span class="strength-endurance_filter_icon"><p>Fuerza y Potencia</p></span></a></li>
+                            </ul>
+                            <ul id="week">
+                                <li>Entrenamiento por Semana</li>
+                                <li><a class="selected" href="javascript:void(0)" data-filter="*">Todas</a></li>
+                                <li><a href="javascript:void(0)" class="two-per-week" data-filter=".two-per-week"><span class="two-per-week_filter_icon"><p>2 veces po Semana</p></span></a></li>
+                                <li><a href="javascript:void(0)" class="three-per-week" data-filter=".three-per-week"><span class="three-per-week_filter_icon"><p>3 veces por Semana</p></span></a></li>
+                                <li><a href="javascript:void(0)" class="four-per-week" data-filter=".four-per-week"><span class="four-per-week_filter_icon"><p>4 veces por Semana</p></span></a></li>
+                            </ul>
+
+                            <ul id="length">
+                                <li>Tiempo de Entrenamiento</li>
+                                <li><a class="selected" href="javascript:void(0)" data-filter="*">Todas</a></li>
+                                <li><a href="javascript:void(0)" class="up-to-one-hour" data-filter=".up-to-one-hour"><span class="up-to-one-hour_filter_icon"><p>Más de 1 Hora</p></span></a></li><li><a href="javascript:void(0)" class="up-to-thirty" data-filter=".up-to-thirty"><span class="up-to-thirty_filter_icon"><p>Más de 30 Min.</p></span></a></li>                            </ul>
+                            <ul id="equip">
+                                <li>Equipo a utilizar</li>
+                                <li><a class="selected" href="javascript:void(0)" data-filter="*">All</a></li>
+                                <li><a href="javascript:void(0)" class="machine" data-filter=".machine"><span class="machine_filter_icon"><p>Máquinas</p></span></a></li><li><a href="javascript:void(0)" class="machine-free-weights" data-filter=".machine-free-weights"><span class="machine-free-weights_filter_icon"><p>Máquinas &amp; Peso Libre</p></span></a></li><li><a href="javascript:void(0)" class="body-weight" data-filter=".body-weight"><span class="body-weight_filter_icon"><p>Peso Corporal</p></span></a></li>                            </ul>
+                        </div>
+                        <ul class="workoutgrid filterable-grid ">
+                          <li data-id="id-3" class="two-per-week machine muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+                               <a href=""><span> <div class="muscle_growth_icon"></div><div class="two_x_icon"> </div><div class="thirty_min_icon"></div><div class="machine_icon"></div></span>Rutina de Ejercicios 1-1</a>		
+                          </li>
+                          <li data-id="id-4" class="three-per-week machine muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 0px, 0px);">
+                              <a href="http://elitemensguide.com/workouts/exercise-routine-1-2/"><span> <div class="muscle_growth_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 1-2</a>		
+                          </li>
+                            <li data-id="id-5" class="three-per-week machine muscle-growth up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 66px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-3/"><span> <div class="muscle_growth_icon"></div> <div class="three_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 1-3</a>		
+                           </li>
+                           <li data-id="id-6" class="four-per-week machine muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 66px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-4/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 1-4</a>		
+                            </li>
+                           <li data-id="id-7" class="four-per-week machine muscle-growth up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 132px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-1-5/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 1-5</a>		
+                           </li>
+                           <li data-id="id-8" class="four-per-week machine muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 132px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-6/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 1-6</a>		
+                             </li>
+                         <li data-id="id-9" class="four-per-week machine muscle-growth up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 198px, 0px);">
+                              <a href="http://elitemensguide.com/workouts/exercise-routine-1-7/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 1-7</a>		
+                          </li>
+                          <li data-id="id-10" class="two-per-week machine-free-weights muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 198px, 0px);">
+                              <a href="http://elitemensguide.com/workouts/exercise-routine-1-8/"><span> <div class="muscle_growth_icon"></div> <div class="two_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-8</a>		
+                           </li>
+                <li data-id="id-11" class="three-per-week machine-free-weights muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 265px, 0px);">
+                            <a href="http://elitemensguide.com/workouts/exercise-routine-1-9/"><span> <div class="muscle_growth_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-9</a>		
+                          </li>
+                          <li data-id="id-12" class="three-per-week machine-free-weights muscle-growth up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 265px, 0px);">
+                              <a href="http://elitemensguide.com/workouts/exercise-routine-1-10/"><span> <div class="muscle_growth_icon"></div> <div class="three_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-10</a>		
+                            </li>
+                           <li data-id="id-13" class="four-per-week machine-free-weights muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 331px, 0px);">
+                              <a href="http://elitemensguide.com/workouts/exercise-routine-1-11/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-11</a>		
+                           </li>
+                           <li data-id="id-14" class="four-per-week machine-free-weights muscle-growth up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 331px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-12/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-12</a>		
+                           </li>
+                            <li data-id="id-15" class="three-per-week machine-free-weights muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 397px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-1-13/"><span> <div class="muscle_growth_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-13</a>		
+                            </li>
+                            <li data-id="id-16" class="four-per-week machine-free-weights muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 397px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-14/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-14</a>		
+                            </li>
+                           <li data-id="id-17" class="four-per-week machine-free-weights muscle-growth up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 463px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-15/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-15</a>		
+                           </li>
+                           <li data-id="id-18" class="four-per-week machine-free-weights muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 463px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-16/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-16</a>		
+                           </li>
+                           <li data-id="id-19" class="four-per-week machine-free-weights muscle-growth up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 529px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-17/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-17</a>		
+                           </li>
+                           <li data-id="id-20" class="four-per-week machine-free-weights muscle-growth up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 529px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-18/"><span> <div class="muscle_growth_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-18</a>		
+                           </li>
+                            <li data-id="id-21" class="two-per-week machine-free-weights muscle-growth up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 595px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-19/"><span> <div class="muscle_growth_icon"></div> <div class="two_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 1-19</a>		
+                           </li>
+                           <li data-id="id-22" class="two-per-week machine muscle-growth up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 595px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-1-20/"><span> <div class="muscle_growth_icon"></div> <div class="two_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 1-20</a>		
+                           </li>
+                           <li data-id="id-23" class="two-per-week machine muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 662px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-2-1/"><span> <div class="muscle_endurance_icon"></div> <div class="two_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 2-1</a>		
+                            </li>
+                            <li data-id="id-24" class="three-per-week machine muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 662px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-2/"><span> <div class="muscle_endurance_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 2-2</a>		
+                            </li>
+                            <li data-id="id-25" class="three-per-week machine muscle-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 728px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-3/"><span> <div class="muscle_endurance_icon"></div> <div class="three_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 2-3</a>		
+                           </li>
+                           <li data-id="id-26" class="four-per-week machine muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 728px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-2-4/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 2-4</a>		
+                           </li>
+                           <li data-id="id-27" class="four-per-week machine muscle-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 794px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-2-5/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 2-5</a>		
+                           </li>
+                          <li data-id="id-28" class="four-per-week machine muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 794px, 0px);">
+                              <a href="http://elitemensguide.com/workouts/exercise-routine-2-6/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 2-6</a>		
+                           </li>
+                           <li data-id="id-29" class="four-per-week machine muscle-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 860px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-2-7/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 2-7</a>		
+                           </li>
+                          <li data-id="id-30" class="two-per-week machine-free-weights muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 860px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-2-8/"><span> <div class="muscle_endurance_icon"></div> <div class="two_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-8</a>		
+                            </li>
+                            <li data-id="id-31" class="three-per-week machine-free-weights muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 926px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-9/"><span> <div class="muscle_endurance_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-9</a>		
+                            </li>
+                            <li data-id="id-32" class="three-per-week machine-free-weights muscle-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 926px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-10/"><span> <div class="muscle_endurance_icon"></div> <div class="three_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-10</a>		
+                            </li>
+                            <li data-id="id-33" class="four-per-week machine-free-weights muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 992px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-11/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-11</a>		
+                            </li>
+                            <li data-id="id-34" class="four-per-week machine-free-weights muscle-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 992px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-12/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-12</a>		
+                            </li>
+                            <li data-id="id-35" class="three-per-week machine-free-weights muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1059px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-13/"><span> <div class="muscle_endurance_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-13</a>		
+                            </li>
+                            <li data-id="id-36" class="four-per-week machine-free-weights muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1059px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-14/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-14</a>		
+                            </li>
+                            <li data-id="id-37" class="four-per-week machine-free-weights muscle-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1125px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-15/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-15</a>		
+                            </li>
+                            <li data-id="id-38" class="four-per-week machine-free-weights muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1125px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-16/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-16</a>		
+                            </li>
+                            <li data-id="id-39" class="four-per-week machine-free-weights muscle-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1191px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-17/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-17</a>		
+                            </li>
+                            <li data-id="id-40" class="four-per-week machine-free-weights muscle-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1191px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-18/"><span> <div class="muscle_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-18</a>		
+                            </li>
+                            <li data-id="id-41" class="two-per-week machine-free-weights muscle-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1257px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-19/"><span> <div class="muscle_endurance_icon"></div> <div class="three_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 2-19</a>		
+                           </li>
+                            <li data-id="id-42" class="two-per-week machine muscle-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1257px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-2-20/"><span> <div class="muscle_endurance_icon"></div> <div class="three_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 2-20</a>		
+                            </li>
+                            <li data-id="id-43" class="two-per-week machine strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1323px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-1/"><span> <div class="strength_and_endurance_icon"></div> <div class="two_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 3-1</a>		
+                            </li>
+                            <li data-id="id-44" class="three-per-week machine strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1323px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-2/"><span><div class="strength_and_endurance_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 3-2</a>		
+                            </li>
+                            <li data-id="id-45" class="three-per-week machine strength-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1389px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-3/"><span><div class="strength_and_endurance_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 3-3</a>		
+                            </li>
+                            <li data-id="id-46" class="four-per-week machine strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1389px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-4/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 3-4</a>		
+                            </li>
+                            <li data-id="id-47" class="four-per-week machine strength-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1456px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-5/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 3-5</a>		
+                            </li>
+                            <li data-id="id-48" class="four-per-week machine strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1456px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-6/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 3-6</a>		
+                            </li>
+                            <li data-id="id-49" class="four-per-week machine-free-weights strength-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1522px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-7/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon"></div> </span>Rutina de Ejercicios 3-7</a>		
+                            </li>
+                            <li data-id="id-50" class="two-per-week machine-free-weights strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1522px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-8/"><span><div class="strength_and_endurance_icon"></div> <div class="two_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-8</a>		
+                           </li>
+                            <li data-id="id-51" class="three-per-week machine-free-weights strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1588px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-9/"><span><div class="strength_and_endurance_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-9</a>		
+                            </li>
+                            <li data-id="id-52" class="three-per-week machine-free-weights strength-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1588px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-10/"><span><div class="strength_and_endurance_icon"></div> <div class="three_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-10</a>		
+                            </li>
+                            <li data-id="id-53" class="four-per-week machine-free-weights strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1654px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-11/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-11</a>		
+                            </li>
+                            <li data-id="id-54" class="four-per-week machine-free-weights strength-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1654px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-3-12/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-12</a>		
+                            </li>
+                            <li data-id="id-55" class="three-per-week machine-free-weights strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1720px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-13/"><span><div class="strength_and_endurance_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-13</a>		
+                            </li>
+                            <li data-id="id-56" class="four-per-week machine-free-weights strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1720px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-14/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-14</a>		
+                            </li>
+                            <li data-id="id-57" class="four-per-week machine-free-weights strength-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1786px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-15/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-15</a>		
+                            </li>
+                           <li data-id="id-58" class="four-per-week machine-free-weights strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1786px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-3-16/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-16</a>		
+                           </li>
+                            <li data-id="id-59" class="four-per-week machine-free-weights strength-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1852px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-17/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-17</a>		
+                            </li>
+                            <li data-id="id-60" class="four-per-week machine-free-weights strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1852px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-18/"><span><div class="strength_and_endurance_icon"></div> <div class="four_x_icon"></div><div class="thirty_min_icon"></div><div class="machine_and_free_weights_icon"></div> </span>Rutina de Ejercicios 3-18</a>		
+                            </li>
+                            <li data-id="id-61" class="two-per-week machine-free-weights strength-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1919px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-19/"><span> <div class="strength_and_endurance_icon"></div> <div class="two_x_icon"></div><div class="one_hour_icon"></div><div class="machine_and_free_weights_icon" "=""></div> </span>Rutina de Ejercicios 3-19</a>		
+                            </li>
+                            <li data-id="id-62" class="two-per-week machine strength-endurance up-to-one-hour  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1919px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-3-20/"><span> <div class="strength_and_endurance_icon"></div> <div class="two_x_icon"></div><div class="one_hour_icon"></div><div class="machine_icon" "=""></div> </span>Rutina de Ejercicios 3-20</a>		
+                           </li>
+                            <li data-id="id-63" class="two-per-week body-weight strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1985px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-4-1-2/"><span><div class="strength_and_endurance_icon"></div> <div class="two_x_icon"></div><div class="thirty_min_icon"></div><div class="body_weight_icon"></div> </span>Rutina de Ejercicios 4-1</a>		
+                            </li>
+                            <li data-id="id-64" class="three-per-week body-weight strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 1985px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-4-2-2/"><span><div class="strength_and_endurance_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="body_weight_icon"></div> </span>Rutina de Ejercicios 4-2</a>		
+                           </li>
+                          <li data-id="id-65" class="three-per-week body-weight strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 2051px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-4-3/"><span><div class="strength_and_endurance_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="body_weight_icon"></div> </span>Rutina de Ejercicios 4-3</a>		
+                            </li>
+                          <li data-id="id-66" class="two-per-week body-weight strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(410px, 2051px, 0px);">
+                                <a href="http://elitemensguide.com/workouts/exercise-routine-4-4/"><span><div class="strength_and_endurance_icon"></div> <div class="two_x_icon"></div><div class="thirty_min_icon"></div><div class="body_weight_icon"></div> </span>Rutina de Ejercicios 4-4</a>		
+                            </li>
+                            <li data-id="id-67" class="three-per-week body-weight strength-endurance up-to-thirty  isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 2117px, 0px);">
+                               <a href="http://elitemensguide.com/workouts/exercise-routine-4-5/"><span><div class="strength_and_endurance_icon"></div> <div class="three_x_icon"></div><div class="thirty_min_icon"></div><div class="body_weight_icon"></div> </span>Rutina de Ejercicios 4-5</a>		
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div></div>
+    <div class="modal" id="modal_default_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Elige el tipo de Rutina</h4>
+                </div>
+                <div class="modal-body clearfix">
+
+                    <div class="col-md-5"><i class="fa fa-cog" aria-hidden="true"></i>AUTOMATICA</div>
+
+                    <div class="col-md-5"><i class="fa fa-tachometer" aria-hidden="true"></i>MANUAL</div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-clean" data-dismiss="modal">Cerrar</button>              
+                </div>
+            </div>
+        </div>
+    </div>    
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script type='text/javascript' src="{{asset('bundles/techgymptfrontend/js/isoto.js')}}"></script>  
+{% endblock %}

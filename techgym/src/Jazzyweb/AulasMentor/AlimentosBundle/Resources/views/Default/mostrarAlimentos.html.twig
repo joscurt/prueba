@@ -1,0 +1,21 @@
+{% extends 'JazzywebAulasMentorAlimentosBundle:Default:layout.html.twig' %}
+
+  {% block contenido %}
+
+  <table>
+      <tr>
+          <th>alimento (por 100g)</th>
+          <th>energía (Kcal)</th>
+          <th>grasa (g2)</th>
+      </tr>
+      {% for alimento in alimentos %}
+      <tr>
+          <td><a href="{{ path('JAMAB_ver', {'id': alimento.id}) }}">{{alimento.nombre}}</a></td>
+          <td>{{ alimento.energia }}</td>
+          <td>{{ alimento.grasatotal }}</td>
+      </tr>
+      {% endfor %}
+
+  </table>
+
+  {% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<div class="row">  
+    <div class="col-md-12">  
+        <nav class="navbar brb">
+
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-reorder"></span>                            
+                </button>                                                
+                <a class="navbar-brand" href="{{ path('techgym_pt_frontend_homepage') }}"><img src="{{ asset('bundles/techgymptfrontend/img/logo.png') }}"></a>                                                                                     
+            </div>
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!--<li class="active"><a href="{{ path('techgym_pt_frontend_registro') }}">Registrar</a></li>
+                    <li><a href="{{ path('techgym_pt_frontend_login') }}">Login</a></li>-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon-group"></span>Alumnos</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('techgym_pt_frontend_alumnos') }}">Mis Alumnos</a></li>
+                            <li><a href="{{path ('techgym_pt_frontend_reg_alumnos')}}">Nuevo Alumno</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{path ('techgym_pt_frontend_alumnos_inac')}}">Alumnos Inactivos</a></li>
+                            
+                          <!--  <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>-->
+                        </ul>
+                    </li>
+                    <li>
+                    <li><a href="{{path ('techgym_pt_frontend_ver_e')}}"><span class="icon-cogs"></span>Evaluaciones</a></li> 
+                    </li>
+                    <li>
+                    <li><a href="{{path ('techgym_pt_frontend_reg_alumnos')}}"><span class="icon-bar-chart"></span>Rutinas</a></li> 
+                                        <li>
+                    <li><a href="{{path ('techgym_pt_frontend_reg_alumnos')}}"><span class="icon-cogs"></span>Herramientas</a></li> 
+                    </li>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Buscar">
+                    </div>
+                    <button type="submit" class="btn btn-default">Buscar</button>
+                    <a href="{{path('techgym_pt_logout') }}" class="btn btn-primary">Salir</a>
+                </form>
+
+
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </div><!-- /.container-fluid -->
+</div>

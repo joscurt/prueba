@@ -1,0 +1,104 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+
+    {% block stylesheets %}
+        {{ parent() }}
+        <link href="{{ asset('bundles/techgymptfrontend/css/my.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/techgymptfrontend/css/fullcalendar/fullcalendar.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/techgymptfrontend/css/fullcalendar/fullcalendar.css') }}" rel="stylesheet">
+    {% endblock %}
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-10">
+
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesCorrectos.html.twig' %} 
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesNoCorrectos.html.twig' %}   
+
+            <div id='calendar2'></div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+    {{parent()}}
+
+    <script>
+        $(document).ready(function () {
+
+            // page is now ready, initialize the calendar...
+
+            $('#calendar2').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,listDay,listWeek'
+                },
+               aspectRatio: 1.3,
+                eventRender: function (event, element) {
+                    element.popover({
+                        animation: true,
+                        html: true,
+                        container:'body',
+                        placement: 'bottom',
+                        delay: 300,
+                        content: "<img  style='width:70px;text-align:center;border-radius: 50%;border: 3px solid #ccc;'src='" + event.msg + "'><div class='list-text'><span class='list-text-name'><strong>"+ event.msgnombre +"</strong></span> <div class='list-text-info'><i class='icon-calendar'></i> <strong>Fecha:</strong>"+event.msgfecha1+"</div><div class='list-text-info'><i class='icon-time'></i> <strong>Hora:</strong>"+event.msgfecha2+"<div class='list-text-info'><i class='icon-home'></i> <strong>Gym:</strong>" + event.gym +"</div></div></div>",
+                        trigger: 'hover'
+                    });
+                },
+                buttonIcons: false, // show the prev/next text
+                weekNumbers: true,
+                navLinks: true, // can click day/week names to navigate views
+                editable: true,
+                eventLimit: true,
+                buttonText: {
+                    prev: 'Previo', // <
+                    next: 'Siguiente', // >
+                    prevYear: '&laquo;', // <<
+                    nextYear: '&raquo;', // >>
+                    today: 'Hoy',
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    more: 'Más'
+                },
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                // 曜日略称
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+                events: [
+        {% for agendas in agenda %}
+
+
+                        {
+                            title: '{{agendas.alumno.nombre}} {{agendas.alumno.apellidos}} - {{ agendas.fecha | date('H:i A') }}',
+                            start: '{{ agendas.fecha | date('c') }}',
+                            msg: '{{ asset("bundles/techgymptfrontend/imagenes/" ~ agendas.alumno.imagenalumno) }}',
+                            msgnombre: '{{agendas.alumno.nombre}} {{agendas.alumno.apellidos}}',
+                            msgfecha1: '{{ agendas.fecha | date('d-m-Y') }}',
+                            msgfecha2: '{{ agendas.fecha | date('H:i A') }}',
+                            gym: '{{ agendas.alumno.gimnasio | default('-') }}',
+                            allDay: false
+                        },
+        {%endfor%}
+                    ],
+                    
+                    selectable: true
+                    
+
+
+                            // put your options and callbacks here
+                });
+
+            });
+
+    </script>
+
+{% endblock %}

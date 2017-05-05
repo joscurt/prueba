@@ -1,0 +1,297 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!--<link href="{{ asset('bundles/techgymptfrontend/css/main.css') }}" rel="stylesheet">-->
+
+{% endblock %}
+
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}   
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+
+
+    
+    
+    <div class="row">
+        <div class="col-md-6">
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success">
+                    <b>Hecho!,</b>{{ flashMessage }}
+                    <button type="button" class="close" data-dismiss="alert">×</button></div>
+                {% endfor %}  
+
+{% include 'TechgymPTFrontendBundle:Mensajes:MensajesCorrectos.html.twig' %} 
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesNoCorrectos.html.twig' %}  
+
+            <div class="block">
+                <div class="header">
+
+                    <h2 class="title"><span class="fa fa-pencil"></span>  Editar Alumno</h2>
+                </div>
+
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'role' : 'form'}}) }}
+
+                {% if form_errors(form) %}
+                    <div class="error">{{ form_errors(form) }}</div>
+                {% endif %}
+
+                <div class="content controls">
+                    {% if form_errors(form.nombre ) %}
+                        <div class="error">{{ form_errors(form.nombre ) }}</div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Nombre del Alumno:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    {{ form_widget(form.nombre) }}
+                            </div></div></div>
+
+                    {% if form_errors(form.apellidos ) %}
+                        <div class="error">{{ form_errors(form.apellidos ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Apellidos:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    {{ form_widget(form.apellidos) }}
+                            </div> </div></div>
+
+                    {% if form_errors(form.username ) %}
+                        <div class="error">{{ form_errors(form.username ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Usuario:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-users fa" aria-hidden="true"></i>
+                                </span>{{ form_widget(form.username) }}
+                            </div> </div></div>
+
+                    {% if form_errors(form.email ) %}
+                        <div class="error">{{ form_errors(form.email ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Email:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                                </span>{{ form_widget(form.email) }}
+                            </div> </div></div>
+
+                    {% if form_errors(form.sexo ) %}
+                        <div class="error">{{ form_errors(form.sexo ) }}
+                        </div>
+                    {%endif%}
+
+                    <div class="form-row">
+                        <div class="col-md-3">Sexo:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-venus-mars" aria-hidden="true"></i>
+                                </span>{{ form_widget(form.sexo) }}
+                            </div> </div></div>
+
+                    {% if form_errors(form.imagenalumno ) %}
+                        <div class="error">
+                            {{ form_errors(form.imagenalumno ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Imagen:</div>
+                        <div class="col-md-9">
+                            <div class="input-group file">
+                                <span class="input-group-addon">
+                                    <i class="icon-camera"></i>
+                                </span>
+                                <input type="text" class="">   {{ form_widget(form.imagenalumno) }}
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">Buscar</button>
+                                </span>
+                            </div> </div></div>
+
+                    {% if form_errors(form.fechanac ) %}
+                        <div class="error">
+                            {{ form_errors(form.fechanac ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Fecha de Nacimiento:</div>
+                        <div class="col-md-9">
+                            <div class="input-group file">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                                </span>
+
+                                {{ form_widget(form.fechanac) }}
+                            </div> </div></div> 
+                            
+                    {% if form_errors(form.celular ) %}
+                        <div class="error">
+                            {{ form_errors(form.celular ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Celular:</div>
+                        <div class="col-md-9">
+                            <div class="input-group file">
+                                <span class="input-group-addon">
+                                   <i class="icon-phone"></i>
+                                </span>
+
+                                {{ form_widget(form.celular) }}
+                            </div> </div></div> 
+                            
+                    {% if form_errors(form.gimnasio ) %}
+                        <div class="error">
+                            {{ form_errors(form.gimnasio ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Gimnasio:</div>
+                        <div class="col-md-9">
+                            <div class="input-group file">
+                                <span class="input-group-addon">
+                                    <i class="icon-home"></i>
+                                </span>
+
+                                {{ form_widget(form.gimnasio) }}
+                            </div> </div></div>                            
+                            
+                            
+                            
+
+                    <div style="display:none;" class="form-row">
+                        <div class="col-md-3">Fecha de Nacimiento:</div>
+                        <div class="col-md-9">
+                            <div class="input-group file">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                                </span>
+
+                                {{ form_widget(form.alumnruti) }}
+                            </div> </div></div>               
+
+
+
+
+
+                    {% if form_errors(form.password ) %}
+                        <div class="error">
+                            {{ form_errors(form.password ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Contraseña:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                </span>{{ form_widget(form.password) }}
+                            </div> </div></div>
+
+                    {% if form_errors(form.password_again ) %}
+                        <div class="error">
+                            {{ form_errors(form.password_again ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Confirma la Contraseña:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                </span>{{ form_widget(form.password_again) }}
+                            </div> </div></div>
+
+
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_rest(form) }}<input id="fat-btn"type="submit" data-loading-text="Loading..." class="btn" value="Confirmar" />
+                    </div>
+
+                </div>
+                </form></div>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-5">
+
+            <form action="{{ path("techgym_pt_frontend_reg_alumnos") }}"{{form_enctype(form)}}  class="form-horizontal">
+                <div class="panel panel-default">                                
+                    <div class="panel-body">
+                        <h3><span class="fa fa-user"></span> {{user.nombre}}</h3>
+                        <p>{{user.apellidos}}</p>
+                        <div class="text-center" id="user_image">
+                            <img src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ user.imagenalumno) }}" class="img-thumbnail">
+                        </div>                                    
+                    </div>
+                    <div class="panel-body form-group-separated">
+
+                        <div class="form-group">                                        
+                            <div class="col-md-12 col-xs-12">
+                                <a href="#" class="btn btn-primary btn-block btn-rounded" data-toggle="modal" data-target="#modal_change_photo">Cambiar la Imagen</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 col-xs-5 control-label">#ID</label>
+                            <div class="col-md-9 col-xs-7">
+                                <input type="text" value="{{user.id}}" class="form-control" disabled="">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="modal animated fadeIn" id="modal_change_photo" tabindex="-1" role="dialog" aria-labelledby="smallModalHead" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="smallModalHead">Change photo</h4>
+                </div>                    
+                <form id="cp_crop" method="post" action="http://localhost/techgym/assets/crop_image.php">
+                    <div class="modal-body">
+                        <div class="text-center" id="cp_target">Use form below to upload file. Only .jpg files.</div>
+                        <input type="hidden" name="cp_img_path" id="cp_img_path">
+                        <input type="hidden" name="ic_x" id="ic_x">
+                        <input type="hidden" name="ic_y" id="ic_y">
+                        <input type="hidden" name="ic_w" id="ic_w">
+                        <input type="hidden" name="ic_h" id="ic_h">                        
+                    </div>                    
+                </form>
+                <form id="cp_upload" method="post" enctype="multipart/form-data" action="http://localhost/techgym/assets/upload_image.php">
+                    <div class="modal-body form-horizontal form-group-separated">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">New Photo</label>
+                            <div class="col-md-4">
+                                <a class="file-input-wrapper btn btn-default  fileinput btn-info"><span>Select file</span>
+                                    <input type="file" class="fileinput btn-info" name="file" id="cp_photo" data-filename-placement="inside" title="Select file"></a>
+                            </div>                            
+                        </div>                        
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success disabled" id="cp_accept">Accept</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div> 
+    </div>
+{% endblock %}

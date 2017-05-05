@@ -1,0 +1,179 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+
+    {% block stylesheets %}
+        {{ parent() }}
+        <link href="{{ asset('bundles/techgymptfrontend/css/my.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/techgymptfrontend/css/table.css') }}" rel="stylesheet">
+    {% endblock %}
+
+    <div class="row">
+        <div class="col-md-10">
+
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesCorrectos.html.twig' %} 
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesNoCorrectos.html.twig' %}   
+
+            <div class="block">
+                <div class="header">
+                    <h2>Mis Alumnos</h2>
+                </div>
+              <div class="content">
+                    <a href="{{path ('techgym_pt_frontend_reg_alumnos')}}" class="btn btn-primary" ><i class="fa fa-fw -square -circle fa-plus-square"></i> Alumno nuevo</a>
+                   <div class="table-responsive">
+                    <table class="table sortable_simple table-hover">
+                        <thead>
+                            <tr> 
+                                <th style="text-align: center;">Ver</th>
+                                <th style="text-align: center;">Nombre</th>                                                    
+                                <th style="text-align: center;">Email</th>
+                                <th style="text-align: center;">Inscripcion</th>
+                                <th style="text-align: center;" >Accion</th>                                     
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for alumno in alumnos %}
+                                <tr data-id={{alumno.id}}>
+                                    <td style="padding: 0;">
+                                        <div class="sec2">
+                                            <div class='container_ui'>
+                                                <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ alumno.id }}">
+                                                    <label for='message-1'>
+                                                        <div class="container_ui__item">
+                                                            <div class="face">
+                                                                <img src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ alumno.imagenalumno) }}">
+                                                                <div class="color_bar one">
+                                                                    <p>Now Reading</p>
+                                                                    <span>Ver Más...</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </label> </a>   </div> </div>
+
+
+                                    </td>
+                                    <!--<td>
+                                        <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ alumno.id }}"> <img src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ alumno.imagenalumno) }}" class="img-circle img-thumbnail" width="50"></a>
+                                    </td>-->
+                                    <td data-label="Nombre:">
+
+                                      <!--  <div class="sec2">
+                                            <div class='container_ui'>
+                                                <label for='message-1'>
+                                                    <div style="padding-left: 11px;height: 80px;" class="container_ui__item">
+                                                        <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ alumno.id }}"> <h2>
+                                                                <span>
+                                                                    {{ alumno.nombre }}
+                                                                    {{ alumno.apellidos }}
+                                                                </span>
+                                                            </h2></a>
+                                                        <div class='dot active'></div>
+                                                        <a href="mailto:{{ alumno.email }}"> <h3>  {{ alumno.email }}</h3></a>
+                                                        <h4>asdasdas asdasdasd asdasdasdsa</h4>   
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>     
+-->
+                                        <span>
+                                            <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ alumno.id }}"><b>{{ alumno.nombre }}</b>
+                                                {{ alumno.apellidos }}</a>
+                                        </span>
+                                    </td>
+                                   <td data-label="Correo:">
+                                        <a href="mailto:{{ alumno.email }}">{{ alumno.email }}</a>
+                                    </td>
+                                    <td data-label="Fecha:">
+                                         <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ alumno.id }}"> 
+                                                                <span>
+                                                                    {{ alumno.creacionalum | date('d-m-Y') }}
+                                                                </span>
+                                                            </a>
+                                    </td>
+                                    <!--<td style="padding: 0;">
+                                    <div class="sec2">
+                                            <div class='container_ui'>
+                                                <label for='message-1'>
+                                                    <div style="padding-left: 11px;height: 80px;" class="container_ui__item">
+                                                        <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ alumno.id }}"> <h2>
+                                                                <span>
+                                                                    {{ alumno.creacionalum | date('d-m-Y') }}
+                                                                </span>
+                                                            </h2></a>
+                                                        
+                                                          
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>       
+                                         </td>-->
+                                    <td style="text-align: center !important;">
+                                        
+                                        <div class="btn-group">
+                                            <button style="background: rgb(153, 51, 51);" class="btn btn-desac" value="left" type="button">
+                                                <i class="fa fa-fw s fa-remove"></i>Desactivar</button>
+
+                                            <a class="btn btn-info" href="{{path('techgym_pt_frontend_alumno_editar', { id:alumno.id })}}">
+
+                                                <i class="icon-edit"></i>Editar</a>
+                                            <a class="btn btn-success" href="{{path('techgym_pt_frontend_ver_evaluacion', { id:alumno.id })}}">    
+
+                                                <i class="icon-file-text-alt"></i>Evaluacion</a>
+
+                                            <a href="{{path('techgym_pt_frontend_ver_rutina', { id:alumno.id })}}" class="btn btn-warning" value="right" type="button">
+                                                <i class="icon-bar-chart"></i>Rutina</a>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{include('TechgymPTFrontendBundle:Login:borrar/borrar_active.html.twig', {form:active_form_ajax,message:'¿Éstas Seguro que deseas desactivar al Alumno?', id: 'form-delete', with_submit:false})}}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{parent()}}
+    <script type='text/javascript' src="{{asset('bundles/techgymptfrontend/js/borrar.js')}}"></script>  
+
+    <script>
+
+
+// random color generator by mtf
+
+        var safeColors = ['00', '33', '66', '99', 'cc', 'ff'];
+        var rand = function () {
+            return Math.floor(Math.random() * 5);
+        };
+        var randomColor = function () {
+            var r = safeColors[rand()];
+            var g = safeColors[rand()];
+            var b = safeColors[rand()];
+            return "#" + r + g + b;
+        };
+        $(document).ready(function () {
+
+            $('.color_bar').each(function () {
+                $(this).css('background', randomColor());
+            });
+
+        });
+        $(document).ready(function () {
+
+            $('').each(function () {
+                $(this).css('background', randomColor());
+            });
+
+        });
+
+    </script>
+{% endblock %}

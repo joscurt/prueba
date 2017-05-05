@@ -1,0 +1,26 @@
+{# empty Twig template #}
+{{form_start(form, {'attr':{'id':id|default('form')}})}}
+{{form_widget(form)}}
+
+{% if with_submit is not defined or with_submit == true %}                                              
+    <input type="button" value="Eliminar" class="btn btn-danger" onclick="confirmDelete()" ><i class="fa fa-fw s fa-remove"></i>
+{% endif %}
+
+
+{{form_end(form)}}
+<script>
+
+
+    var message = '{{ message }}';
+
+    function confirmDelete()
+    {
+        bootbox.confirm(message, function (result) {
+            if (result == true)
+            {
+                document.form.submit();
+            }
+        });
+    }
+
+</script>

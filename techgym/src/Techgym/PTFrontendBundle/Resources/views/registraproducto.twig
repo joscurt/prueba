@@ -1,0 +1,214 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!--<link href="{{ asset('bundles/techgymptfrontend/css/main.css') }}" rel="stylesheet">-->
+
+{% endblock %}
+
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}   
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="block">
+                <div class="header">
+                    <h2 class="title">Registro de Producto</h2>
+
+                </div>
+
+                <form class="form-horizontal" novalidate="true" action="{{ path("techgym_producto") }}"{{form_enctype(form)}} 
+                      method="post" id="login">
+
+                    {% if form_errors(form) %}
+                        <div class="error">{{ form_errors(form) }}</div>
+                    {% endif %}
+
+                    <div class="content controls">
+                        {% if form_errors(form.nombre ) %}
+                            <div class="error">{{ form_errors(form.nombre ) }}</div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Nombre del Alumno:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+
+                                        <i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        {{ form_widget(form.nombre) }}
+                                </div></div></div>
+
+                        {% if form_errors(form.apellidos ) %}
+                            <div class="error">{{ form_errors(form.apellidos ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Apellidos:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        {{ form_widget(form.apellidos) }}
+                                </div> </div></div>
+
+                        {% if form_errors(form.username ) %}
+                            <div class="error">{{ form_errors(form.username ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Usuario:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-users fa" aria-hidden="true"></i>
+                                    </span>{{ form_widget(form.username) }}
+                                </div> </div></div>
+
+                        {% if form_errors(form.email ) %}
+                            <div class="error">{{ form_errors(form.email ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Email:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                                    </span>{{ form_widget(form.email) }}
+                                </div> </div></div>
+
+                                 {% if form_errors(form.sexo ) %}
+                            <div class="error">{{ form_errors(form.sexo ) }}
+                            </div>
+                        {%endif%}
+                                
+                       <div class="form-row">
+                            <div class="col-md-3">Sexo:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-venus-mars" aria-hidden="true"></i>
+                                    </span>{{ form_widget(form.sexo) }}
+                                </div> </div></div>
+
+                        {% if form_errors(form.imagenalumno ) %}
+                            <div class="error">
+                                {{ form_errors(form.imagenalumno ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Imagen:</div>
+                            <div class="col-md-9">
+                                <div class="input-group file">
+                                  <span class="input-group-addon">
+                                       <i class="icon-camera"></i>
+                                    </span>
+                                    <input type="text" class="">   
+                                    {{ form_widget(form.imagenalumno) }}<span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button">Buscar</button>
+                                    </span>
+                                </div> </div></div>
+
+                                        
+                         {% if form_errors(form.fechanac ) %}
+                            <div class="error">
+                                {{ form_errors(form.fechanac ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Fecha de Nacimiento:</div>
+                            <div class="col-md-9">
+                                <div class="input-group file">
+                                  <span class="input-group-addon">
+                                      <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                                    </span>
+                                    
+                                    {{ form_widget(form.fechanac) }}
+                                </div> </div></div>               
+                                 {% if form_errors(form.celular ) %}
+                        <div class="error">
+                            {{ form_errors(form.celular ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Celular:</div>
+                        <div class="col-md-9">
+                            <div class="input-group file">
+                                <span class="input-group-addon">
+                                   <i class="icon-phone"></i>
+                                </span>
+
+                                {{ form_widget(form.celular) }}
+                            </div> </div></div> 
+                            
+                    {% if form_errors(form.gimnasio ) %}
+                        <div class="error">
+                            {{ form_errors(form.gimnasio ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Gimnasio:</div>
+                        <div class="col-md-9">
+                            <div class="input-group file">
+                                <span class="input-group-addon">
+                                   <i class="icon-home"></i>
+                                </span>
+
+                                {{ form_widget(form.gimnasio) }}
+                            </div> </div></div>            
+                                
+                                
+                                
+                                
+                                                <div style="display:none;" class="form-row">
+                            <div class="col-md-3">Fecha de Nacimiento:</div>
+                            <div class="col-md-9">
+                                <div class="input-group file">
+                                  <span class="input-group-addon">
+                                      <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                                    </span>
+                                    
+                                    {{ form_widget(form.alumnruti) }}
+                                </div> </div></div>                         
+                                        
+
+                        {% if form_errors(form.password ) %}
+                            <div class="error">
+                                {{ form_errors(form.password ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Contraseña:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                    </span>{{ form_widget(form.password) }}
+                                </div> </div></div>
+
+                        {% if form_errors(form.password_again ) %}
+                            <div class="error">
+                                {{ form_errors(form.password_again ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Confirma la Contraseña:</div>
+                            <div class="col-md-9">
+                                <div style="margin-bottom:15px;" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                    </span>{{ form_widget(form.password_again) }}
+                                </div> 
+                            <input id="fat-btn"type="submit" data-loading-text="Loading..." class="btn" value="Confirmar" />
+                            </div></div>
+
+                        {{ form_rest(form) }}
+                        
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}{# empty Twig template #}

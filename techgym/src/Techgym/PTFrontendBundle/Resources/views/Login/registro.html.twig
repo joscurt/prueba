@@ -1,0 +1,161 @@
+{% extends 'TechgymPTFrontendBundle::baseLOGIN.html.twig' %}
+
+
+
+{% block body %}
+
+
+    <div class="registration-block">
+        <div class="block block-transparent">
+            <div class="head tac">                    
+                <a href="index.html"><img src="{{ asset('bundles/techgymptfrontend/img/logob.png') }}"/></a>
+            </div>
+            {% if form_errors(form) %}
+                <div class="text-warning">{{ form_errors(form) }}</div>
+            {% endif %}
+            <form class="form-horizontal" novalidate="true" action="{{ path("techgym_pt_frontend_registro") }} "{{form_enctype(form)}}
+                  method="post" id="login">
+                <div class="content controls npt">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-user"></span>
+                                </div>
+
+
+                                {{ form_widget(form.nombre) }}</div>
+                                {% if form_errors(form.nombre ) %}
+                                <div class="text-warning">{{ form_errors(form.nombre ) }}</div>
+                            {%endif%}
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-user"></span>
+                                </div>
+
+
+                                {{ form_widget(form.apellidos) }} </div>
+                                {% if form_errors(form.apellidos ) %}
+                                <div class="text-warning">{{ form_errors(form.apellidos ) }}</div>
+                            {%endif%}
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-globe"></span>
+                                </div>
+
+                                {{ form_widget(form.username) }}</div>
+                                {% if form_errors(form.username ) %}
+                                <div class="text-warning">{{ form_errors(form.username ) }}</div>
+                            {%endif%}
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group file">
+                                <div class="input-group-addon">
+                                    <span class="icon-camera"></span>
+                                </div>
+
+
+                                <input placeholder="Sube tu imagen de Perfil" type="text" class="form-control">   
+                                {{ form_widget(form.imagenpt) }}</div>
+                            {% if form_errors(form.imagenpt ) %}
+                                <div class="text-warning">
+                                    {{ form_errors(form.imagenpt ) }}
+                                </div>
+                            {%endif%}
+
+                        </div>
+                    </div>                    
+                    <div class="form-row" style="margin-top: 10px;">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-key"></span>
+                                </div>
+                                 {{ form_widget(form.sexo) }}</div>
+                                {% if form_errors(form.sexo ) %}
+                                <div class="text-warning">{{ form_errors(form.sexo ) }}
+                                </div>
+                            {%endif%}
+                            </div>
+                        
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-envelope"></span>
+                                </div>
+
+                                {{ form_widget(form.email) }}</div>
+                                {% if form_errors(form.email ) %}
+                                <div class="text-warning">{{ form_errors(form.email ) }}
+                                </div>
+                            {%endif%}
+
+                        </div>
+                    </div>                    
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-lock"></span>
+                                </div>
+                                {{ form_widget(form.password) }}
+                            </div>
+                            {% if form_errors(form.password ) %}
+                                <div class="text-warning">
+                                    {{ form_errors(form.password ) }}
+                                </div>
+                            {%endif%}
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-unlock-alt"></span>
+                                </div>
+                                {{ form_widget(form.password_again) }}
+                            </div>
+                            {% if form_errors(form.password_again ) %}
+                                <div class="text-warning">
+                                {{ form_errors(form.password_again ) }}    
+                                </div>
+                            {%endif%}
+                        </div>
+                    </div>                    
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <a class="btn btn-default btn-block btn-clean" href="http://localhost/techgym/web/app_dev.php/techgym/login">Volver al Login</a>
+                        </div>
+                        <div class="col-md-8">
+                            {{ form_rest(form) }}
+                            <button type="submit" class="btn btn-default btn-block btn-clean" value="Adelante" />Adelante</button>
+                          </div>
+                            
+                    </div>         
+
+                    <!--<div class="form-row">
+                        
+                        <div class="col-md-12 tac"><strong>UTILIZA</strong></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-info btn-block"><span class="icon-facebook"></span> &nbsp; Facebook</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-primary btn-block"><span class="icon-twitter"></span> &nbsp; Twitter</a>
+                        </div>
+                    </div>    -->                
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

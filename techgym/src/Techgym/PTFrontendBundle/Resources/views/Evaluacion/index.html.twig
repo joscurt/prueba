@@ -1,0 +1,169 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+
+    {% block stylesheets %}
+        {{ parent() }}
+        <link href="{{ asset('bundles/techgymptfrontend/css/my_1.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/techgymptfrontend/css/table.css') }}" rel="stylesheet">
+    {% endblock %}
+
+
+    <div class="row">
+
+
+        <div class="col-md-10">
+
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success">
+                    <b>Hecho!,</b>{{ flashMessage }}
+                    <button type="button" class="close" data-dismiss="alert">×</button></div>
+                {% endfor %}   
+
+            <div class="block">
+                <div class="header">
+                    <h2>Evaluaciones de {% for a in alumno3 %}
+                        {{ a.nombre}}  {{ a.apellidos}}
+                    </h2>
+                </div>
+
+                <div class="content">
+                    <a  href="{{ path('techgym_pt_frontend_reg_evaluacion', { id:a.id }) }}" class="btn btn-primary" >
+                        <i class="fa fa-fw -square -circle fa-plus-square"></i>  Nueva Evaluación
+
+                        {%endfor%}
+
+
+                        </a>
+                            <div class="table-responsive">
+                        <table class="table sortable_simple table-hover">
+                            <thead>
+                                <tr>                                                    
+                                    <th >Ver</th>
+                                    <th style="text-align:center;">Edad(años)</th>
+                                    <th style="text-align:center;">Estatura(cm)</th>                                                    
+                                    <th style="text-align:center;">Fecha Evaluación</th>
+                                    <th style="text-align:center;">Peso(kg)</th>
+                                    <th style="text-align:center;">Peso Grasa(kg)</th>
+                                    <th style="text-align:center;">Peso Magro(kg)</th>
+                                    <th style="text-align:center;">% de Grasa</th>
+                                    <th style="text-align:center;" >IMC</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for evaluacion in alumno %}
+                                    <tr>
+
+
+                                        <td style="padding: 0;">
+                                            <div class="sec2">
+                                                <div class='container_ui'>
+
+                                                    <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ evaluacion.alumno.id }}" class="list-item"> 
+                                                        <label for='message-1'>
+                                                            <div class="container_ui__item">
+                                                                <div class="face">
+                                                                    <img src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ evaluacion.imageneva|default('/Hombre.jpg')) }}">
+                                                                    <div class="color_bar one">
+                                                                        <p>Now Reading</p>
+                                                                        <span>Ver Más...</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </label> </a>   </div> </div>
+
+
+                                        </td>  
+
+
+
+
+                                        <!--<td> 
+                                         <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ evaluacion.id }}"><i class="-alt fa fa-2x fa-eye fa-fw"></i></a>
+                                     </td>-->
+
+                                        <td data-label="Edad:"style="text-align:center;">                                       
+                                            {{ evaluacion.edad }}
+
+                                        </td>
+                                        <td data-label="Estatura:" style="text-align:center;">
+                                            {{ evaluacion.estatura }}cm
+                                        </td>
+                                        <td data-label="Fecha:" style="text-align:center;">{{ evaluacion.creacioneva | date('d-m-Y') }}
+                                        </td>
+                                        <td data-label="Peso:" style="text-align:center;">
+                                            {{ evaluacion.peso }}Kg
+                                        </td>
+                                        <td data-label="Peso Grasa:" style="text-align:center;">
+                                            {{ evaluacion.pesoGrasa|number_format(1, ',', ',') }}Kg
+                                        </td>
+                                        <td data-label="Peso Magro" style="text-align:center;">
+                                            {{ evaluacion.pesoMagro|number_format(1, ',', ',') }}Kg
+                                        </td>
+                                        <td data-label="% de Grasa:" style="text-align:center;">
+                                            {{ evaluacion.pGrasa|number_format(1, ',', ',') }}%
+                                        </td>
+                                        <td data-label="IMC:" style="text-align:center;">
+                                            {{ evaluacion.imc|number_format(0,',', ',') }}
+                                        </td>
+                                        <!--<td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-danger" value="left" type="button">
+                                                    <i class="fa fa-fw s fa-remove"></i>Eliminar</button>
+                                                <a class="btn btn-info" href="{{path('techgym_pt_frontend_evaluacion_editar', { id:evaluacion.id })}}">
+
+                                                    <i class="icon-edit"></i>Editar</a>
+
+                                                <button class="btn btn-warning" value="right" type="button">
+                                                    <i class="icon-bar-chart"></i>Rutina</button>
+                                            </div>
+                                        </td>-->
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <script>
+
+
+// random color generator by mtf
+
+            var safeColors = ['00', '33', '66', '99', 'cc', 'ff'];
+            var rand = function () {
+                return Math.floor(Math.random() * 5);
+            };
+            var randomColor = function () {
+                var r = safeColors[rand()];
+                var g = safeColors[rand()];
+                var b = safeColors[rand()];
+                return "#" + r + g + b;
+            };
+            $(document).ready(function () {
+
+                $('.color_bar').each(function () {
+                    $(this).css('background', randomColor());
+                });
+
+            });
+            $(document).ready(function () {
+
+                $('').each(function () {
+                    $(this).css('background', randomColor());
+                });
+
+            });
+
+        </script>
+
+        {% endblock %}

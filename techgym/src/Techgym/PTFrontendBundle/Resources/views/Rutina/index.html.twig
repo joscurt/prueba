@@ -1,0 +1,89 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+    <div class="row">
+        <div class="col-md-10">
+
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesCorrectos.html.twig' %} 
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesNoCorrectos.html.twig' %}   
+
+            <div class="block">
+                <div class="header">
+                    <h2>Mis Rutinas</h2>
+                </div>
+
+                <div class="content">
+                    <div class="form-row">
+                        <a href="{{path('techgym_pt_frontend_alumno_editar_alumn_ruti', { id:alumnos.id })}}" class="btn btn-primary" value="right" type="button">
+                            <i class="icon-bar-chart"></i> Asignar Rutinas</a>
+
+
+                    </div>
+                    <br />
+                    <!--<table class="table table-bordered table-striped sortable_simple">
+                        <thead>
+                            <tr>                                                    
+                                <th>Ver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ejercicio in ejercicios %}
+                            <td> {{ejercicio.id}}</td>
+
+
+                            {% endfor %}
+                        </tbody>
+                    </table>  -->
+                    <table class="table table-bordered table-striped sortable_simple">
+                        <thead>
+                            <tr>                                                    
+                                <th>Ver</th>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Fecha</th>                                                    
+                                <th>Días a la Semana</th>
+                                <th>Tiempo</th>
+                                <th>Forma</th>                                     
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for rutina in rutinas %}
+                                <tr data-id={{rutina.id}}>
+                                    <td>
+                                        <a href="{{ path('techgym_pt_frontend_ver_rutina_alumn', {id:rutina.id}) }}"><i class="-alt fa fa-2x fa-eye fa-fw"></i></a>
+                                    </td>
+                                    <td>
+
+                                        <span>{{ rutina.nombre }}</span>
+                                    </td>
+                                    <td>
+                                        <span>
+                                            <b>{{ rutina.tipo }}</b>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        --
+                                    </td>
+                                    <td>{{ rutina.dias }}</td>
+                                    <td>
+                                        {{ rutina.tiempo }}
+                                    </td>
+                                    <td>
+                                        {{ rutina.equipuso }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script type='text/javascript' src="{{asset('bundles/techgymptfrontend/js/borrar.js')}}"></script>  
+{% endblock %}

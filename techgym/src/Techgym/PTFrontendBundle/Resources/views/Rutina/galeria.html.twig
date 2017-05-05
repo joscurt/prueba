@@ -1,0 +1,139 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}   
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+    {% block stylesheets %}
+        {{ parent() }}
+        <link href="{{ asset('bundles/techgymptfrontend/css/veralumno.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/techgymptfrontend/css/veralumno2.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/techgymptfrontend/css/veralumno3.min.css') }}" rel="stylesheet">
+
+
+    {% endblock %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+
+
+
+                <main role="main" id="main" class="Wr__content__content Wr__content__content--with-two-col">
+
+                    <div class="bodyspace-gptm">
+
+
+
+                        <div class="profileUserInfo">
+                            <div class="divider"></div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="infoSummary">
+
+                                    <ul>
+                                        <li><span>NOMBRE</span>{{ alumno.nombre }}</li>
+                                        <li><span>APELLIDOS</span>{{ alumno.apellidos }}</li>
+                                        <li><span>EDAD</span><div>{{ alumno3.edad |default('-') }}</div></li>
+                                        <li><span>SEXO</span><div>{{ alumno.sexo }}</div></li>
+                                        <li><span>CORREO</span>{{ alumno.email }}</li>
+                                        <li><span>ALUMNO DESDE</span>{{ alumno.creacionalum | date('d M, Y') }}</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="overAllGoal">
+
+                                    <p class="empty"><img src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ alumno.imagenalumno) }}" class="img-circle img-thumbnail" width="120">
+                                        </td></p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-12 pgGrid">
+
+                            <a name=""></a>
+                            <div class="bbModuleContainer rich">
+                                <div class="moduleTitle">
+                                    <div class="title">Galería de Fotos de Evaluación</div>
+
+                                    <div class="moduleActionContainer">
+                                        <div>
+                                            <a class="view-all-link" href="{{path('techgym_pt_frontend_alumno', { id:alumno.id })}}">Volver a estadísticas del Alumno</a>
+                                        </div>
+                                    </div>   
+
+                                </div>
+                                <div class="content">
+
+                                    <div class="moduleTabContent content active">
+                                        <div style="padding: 0px 7px 15px;" class="contentWrapper progress-photos">
+                                            <div class="contentContainer">
+                                                <div class="thumbnails content">
+                                                    <div class="imgContainer">
+                                                        {% for a in alumnoe%}
+                                                            {%if a.imageneva is not null%}
+                                                                <div class="column col-lg-2">          
+                                                                    <div class=" progress-thumbnail">
+                                                                        <a class="fancybox" rel="group" href="{{ asset('bundles/techgymptfrontend/imagenes/' ~ a.imageneva|default('evaluacion/Hombre.jpg')) }}">
+                                                                            <img style="min-height: 135px;" class="white-container" src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ a.imageneva|default('evaluacion/Hombre.jpg')) }}">
+                                                                        </a>
+                                                                        <div class="image-stats-container">
+                                                                            <ul class="imageStats">
+
+                                                                                <li class="imageStats__date-taken">
+                                                                                    <span>{{a.creacioneva | date('M d, Y')|default('-')}}</span>
+                                                                                </li>
+
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div></div>
+                                                                {%endif%}
+                                                            {%endfor%}
+                                                        <span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- deprecate socialFooter class -->
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                </main> 
+
+            </div>
+
+            <!-- Modificar este layout -->
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+
+
+
+{% endblock %}
+
+

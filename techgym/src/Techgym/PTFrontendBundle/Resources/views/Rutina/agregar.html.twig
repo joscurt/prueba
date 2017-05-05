@@ -1,0 +1,67 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+    <div class="row">
+        <div class="col-md-10">
+
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesCorrectos.html.twig' %} 
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesNoCorrectos.html.twig' %}   
+
+            <div class="block">
+                <div class="header">
+                    <h2>Agregar Rutina</h2>
+                </div>
+
+                <div class="content">
+                    <br />
+
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'role' : 'form'}}) }}
+                    <h4 class="text-danger">{{ form_errors(form) }}</h4>
+
+                    <fieldset>
+                        <div class="form-group">
+                            {{ form_label(form.nombre) }}
+                            {{ form_widget(form.nombre, {'attr': {'class': 'form-control', 'placeholder' : 'Nombre'}}) }}
+                            <span class="text-danger">{{ form_errors(form.nombre) }}</span>
+                        </div>
+                                                <div class="form-group">
+                            {{ form_label(form.tipo) }}
+                            {{ form_widget(form.tipo, {'attr': {'class': 'form-control', 'placeholder' : 'Tipo'}}) }}
+                            <span class="text-danger">{{ form_errors(form.tipo) }}</span>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.dias) }}
+                            {{ form_widget(form.dias, {'attr': {'class': 'form-control', 'placeholder' : 'Dias'}}) }}
+                            <span class="text-danger">{{ form_errors(form.dias) }}</span>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.tiempo) }}
+                            {{ form_widget(form.tiempo, {'attr': {'class': 'form-control', 'placeholder' : 'Tiempo'}}) }}
+                            <span class="text-danger">{{ form_errors(form.tiempo) }}</span>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.equipuso) }}
+                            {{ form_widget(form.equipuso, {'attr': {'class': 'form-control', 'placeholder' : 'Equipo a usar'}}) }}
+                            <span class="text-danger">{{ form_errors(form.equipuso) }}</span>
+                        </div>
+                    </fieldset>
+
+                    <p>
+                        {{ form_widget(form.save, {'label' : 'Crear Rutina', 'attr': {'class': 'btn btn-success'}}) }}
+                    </p>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script type='text/javascript' src="{{asset('bundles/techgymptfrontend/js/borrar.js')}}"></script>  
+{% endblock %}

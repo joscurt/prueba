@@ -1,0 +1,83 @@
+{% extends 'TechgymPTFrontendBundle::baseLOGIN.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/techgymptfrontend/css/login.css') }}" rel="stylesheet">
+
+{% endblock %} 
+
+
+{% block body %}
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
+
+
+    <div class="login-block">
+        <form action="{{ path('techgym_pt_login_check') }}" method="post">
+            <fieldset>
+
+                <div class="block block-transparent">
+                    <div class="content controls npt">
+                        <div class="head tac">                    
+                            <a href="{{ path('techgym_pt_frontend_homepage') }}"><img src="{{ asset('bundles/techgymptfrontend/img/logob.png') }}"></a>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <span class="icon-user"></span>
+                                    </div>
+                                    <input type="text" name="_username"  placeholder="Usuario" value="{{ last_username }}" required/>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <span class="icon-key"></span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="Password" name="_password" />
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <a href="{{ path('techgym_pt_frontend_registro') }}" class="btn btn-default btn-block btn-clean">Registro</a>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="hidden" name="_target_path" value="techgym_pt_frontend_homepage"/>
+                                <button class="btn btn-default btn-block btn-clean" type="submit">login</button>
+
+                            </div>
+                        </div>
+                        <div class="form-row">                            
+                            <div class="col-md-12">
+                                <a href="#" class="btn btn-link btn-block">Olvidaste tu Contraseña?</a>
+                            </div>
+                        </div>                         
+                        <!--<div class="form-row">
+                            <div class="col-md-12 tac"><strong>UTILIZA</strong></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <a href="#" class="btn btn-info btn-block"><span class="icon-facebook"></span> &nbsp; Iniciar sesión con Facebook</a>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <a href="#" class="btn btn-primary btn-block"><span class="icon-twitter"></span> &nbsp; Iniciar sesión con Twitter</a>
+                            </div>
+                        </div> -->                   
+                    </div>
+                </div>   
+            </fieldset>
+        </form>
+        <div class="copyright">
+            2016 © <a href="http://www.techgym.cl">TECHGYM</a> Todos los Derechos Reservados.
+        </div>
+    </div>
+
+
+{% endblock %}

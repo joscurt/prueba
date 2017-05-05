@@ -1,0 +1,259 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/techgymptfrontend/css/upruti.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/techgymptfrontend/css/rutinaauto.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <script src="{{asset('bundles/techgymptfrontend/js/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{asset('bundles/techgymptfrontend/js/isotope.pkgd.min.js')}}"></script>
+    
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}   
+    {% include 'TechgymPTFrontendBundle:Login:sidebar2.html.twig' %} 
+
+
+    <div class="row">
+        <div class="col-md-10">
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success">
+                    <b>Hecho!,</b>{{ flashMessage }}
+                    <button type="button" class="close" data-dismiss="alert">×</button></div>
+                {% endfor %}  
+            <div class="block">
+               
+                    <div id="content" class="content">
+                        <div class="header">
+                            <h2 class="title"><span class="fa fa-pencil"></span>  Asignar Rutinas al Alumno</h2>
+                        </div>
+                        <div id="workoutfilters">
+                            <ul id="goal">
+
+                                <li>Objetivo del Entrenamiento</li>
+                                <li><a class="selected" href="javascript:void(0)" data-filter="*">Todas</a></li>
+                                <li><a href="javascript:void(0)" class="muscle-growth" data-filter=".aumento_masa_muscular"><span class="muscle-growth_filter_icon"><p>Crecimiento Muscular</p></span></a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="muscle-endurance" data-filter=".quemar_grasa"><span class="strength-endurance_filter_icon"><p>Quemar Grasa</p></span></a></li>
+                                <li><a href="javascript:void(0)" class="strength-endurance" data-filter=".resistencia_muscular"><span class="muscle-endurance_filter_icon"><p>Resistencia Muscular</p></span></a></li>
+
+                            </ul>
+                            <ul id="week">
+                                <li>Entrenamiento por Semana</li>
+                                <li><a class="selected" href="javascript:void(0)" data-filter="*">Todas</a></li>
+                                <li><a href="javascript:void(0)" class="two-per-week" data-filter=".dos"><span class="two-per-week_filter_icon"><p>2 por Semana</p></span></a></li>
+                                <li><a href="javascript:void(0)" class="three-per-week" data-filter=".tres"><span class="three-per-week_filter_icon"><p>3 por Semana</p></span></a></li>
+                                <li><a href="javascript:void(0)" class="four-per-week" data-filter=".cuatro"><span class="four-per-week_filter_icon"><p>4 por Semana</p></span></a></li>
+                            </ul>
+
+                            <ul id="length">
+                                <li>Duración del Entrenamiento</li>
+                                <li><a class="selected" href="javascript:void(0)" data-filter="*">Todas</a></li>
+                                <li><a href="javascript:void(0)" class="up-to-one-hour" data-filter=".más_de_1_hora"><span class="up-to-one-hour_filter_icon"><p>Más de 1 Hora</p></span></a></li>
+                                <li><a href="javascript:void(0)" class="up-to-thirty" data-filter=".mas_de_30_min"><span class="up-to-thirty_filter_icon"><p>Más de 30 minutos</p></span></a></li>                            </ul>
+                            <ul id="equip">
+                                <li>Equipo a utilizar</li>
+                                <li><a class="selected" href="javascript:void(0)" data-filter="*">Todas</a></li>
+                                <li><a href="javascript:void(0)" class="machine" data-filter=".máquinas"><span class="machine_filter_icon"><p>Máquinas</p></span></a></li>
+                                <li><a href="javascript:void(0)" class="machine-free-weights" data-filter=".maquinas_y_peso_libre"><span class="machine-free-weights_filter_icon"><p>Máquinas & Peso Libre</p></span></a></li>
+                                <li><a href="javascript:void(0)" class="body-weight" data-filter=".peso_libre"><span class="body-weight_filter_icon"><p>Peso Corporal</p></span></a></li> 
+                            </ul>
+                        </div>
+                        <ul id="select" class="workoutgrid filterable-grid "></ul>
+
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'role' : 'form'}}) }}
+                        {% if form_errors(form) %}
+                            <div class="error">{{ form_errors(form) }}</div>
+                        {% endif %}
+
+                        <div style="background:none;" class="content controls">
+                            {% if form_errors(form.nombre ) %}
+                                <div class="error">{{ form_errors(form.nombre ) }}</div>
+                            {%endif%}
+                            <div class="form-row">
+                                <div class="col-md-3">Nombre del Alumno:</div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                            {{ form_widget(form.nombre) }}
+                                    </div></div></div>
+
+                            {% if form_errors(form.apellidos ) %}
+                                <div class="error">{{ form_errors(form.apellidos ) }}
+                                </div>
+                            {%endif%}
+                            <div class="form-row">
+                                <div class="col-md-3">Apellidos:</div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                            {{ form_widget(form.apellidos) }}
+                                    </div> </div></div>
+
+                            {% if form_errors(form.username ) %}
+                                <div class="error">{{ form_errors(form.username ) }}
+                                </div>
+                            {%endif%}
+                            <div class="form-row">
+                                <div class="col-md-3">Usuario:</div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-users fa" aria-hidden="true"></i>
+                                        </span>{{ form_widget(form.username) }}
+                                    </div> </div></div>
+
+                            {% if form_errors(form.email ) %}
+                                <div class="error">{{ form_errors(form.email ) }}
+                                </div>
+                            {%endif%}
+                            <div class="form-row">
+                                <div class="col-md-3">Email:</div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                                        </span>{{ form_widget(form.email) }}
+                                    </div> </div></div>
+
+
+
+                            {% if form_errors(form.imagenalumno ) %}
+                                <div class="error">
+                                    {{ form_errors(form.imagenalumno ) }}
+                                </div>
+                            {%endif%}
+                            <div class="form-row">
+                                <div class="col-md-3">Imagen:</div>
+                                <div class="col-md-9">
+                                    <div class="input-group file">
+                                        <span class="input-group-addon">
+                                            <i class="icon-camera"></i>
+                                        </span>
+                                        <input type="text" class="">   {{ form_widget(form.imagenalumno) }}
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" type="button">Buscar</button>
+                                        </span>
+                                    </div> </div></div>
+
+
+                            {% if form_errors(form.password ) %}
+                                <div class="error">
+                                    {{ form_errors(form.password ) }}
+                                </div>
+                            {%endif%}
+                            <div class="form-row">
+                                <div class="col-md-3">Contraseña:</div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                        </span>{{ form_widget(form.password) }}
+                                    </div> </div></div>
+
+                            {% if form_errors(form.password_again ) %}
+                                <div class="error">
+                                    {{ form_errors(form.password_again ) }}
+                                </div>
+                            {%endif%}
+                            <div class="form-row">
+                                <div class="col-md-3">Confirma la Contraseña:</div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                        </span>{{ form_widget(form.password_again) }}
+                                    </div> </div></div>
+
+                            {% if form_errors(form.sexo ) %}
+                                <div class="error">
+                                    {{ form_errors(form.sexo ) }}
+                                </div>
+                            {%endif%}
+                            <div class="form-row">
+                                <div class="col-md-3">sexo:</div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                        </span>{{ form_widget(form.sexo) }}
+                                    </div> </div></div>
+                            <div class="form-row">
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                        </span>{{ form_widget(form.alumnruti) }}
+                                    </div> </div></div>
+                            
+                                    
+                                    
+                                                        <div class="form-row">
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                        </span>{{ form_widget(form.celular) }}
+                                    </div> </div></div>  
+                                                                <div class="form-row">
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                        </span>{{ form_widget(form.fechanac) }}
+                                    </div> </div></div>
+                                                                <div class="form-row">
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                        </span>{{ form_widget(form.gimnasio) }}
+                                    </div> </div></div>
+                            <div class="col-md-9">
+                                {{ form_rest(form) }}<input id="fat-btn"type="submit" data-loading-text="Loading..." class="btn" value="Confirmar" />
+
+
+                            </div>
+
+                        </div>
+                        </form>
+                </div>
+            </div>  </div>  </div>
+
+                                
+                                      
+           <script>
+        $(document).ready(function () {
+            $("#registroalumno_alumnruti option").each(function () {
+                $("#select").append('<li class="' + $(this).attr('class') + ' isotope-item"><a href="' + $(this).attr('value') + '">'
+                        + $(this).html() +
+                        '<span> <div class="' + $(this).attr('class').split(' ')[0] + '"></div>\n\
+ <div class="' + $(this).attr('class').split(' ')[1] + '"> </div>\n\
+ <div class="' + $(this).attr('class').split(' ')[3] + '"></div>\n\
+ <div class="' + $(this).attr('class').split(' ')[2] + '"></div>\n\
+ </span></a></li>');
+            });
+            $("#select").on("click", "li a", function (e) {
+                e.preventDefault();
+                $("#registroalumno_alumnruti").val($(this).attr("href"));
+            });
+        });
+
+
+    </script>   
+    <script>
+        {% for rutin in rutina %}
+            $('select>option:eq({{rutin.id+2}})').addClass("{{ rutin.tipo|replace(' ', '_')|lower }} {{ rutin.dias|replace(' ', '_')|lower }} {{ rutin.equipuso|replace(' ', '_')|lower }} {{ rutin.tiempo|replace(' ', '_')|lower}}");
+
+        {% endfor %}
+    </script>
+
+    {% block javascripts %}
+        {{parent()}}
+  <script type='text/javascript' src="{{asset('bundles/techgymptfrontend/js/isoto.js')}}"></script> 
+    
+          {% endblock %}
+{% endblock %}

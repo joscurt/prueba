@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="en" />
+
+        <title>Layout para la aplicación MentorNotas</title>
+
+        <link rel="stylesheet" type="text/css" href="../vendors/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" />
+        <!--
+                <link rel="stylesheet" type="text/css" href="../src/css/ui.css" />
+                <link rel="stylesheet" type="text/css" href="../src/css/ui-forms.css" />
+        -->
+        <link rel="stylesheet" type="text/css" href="../src/css/mentornotas.css" />
+
+        <!-- <script type="text/javascript" src="vendors/jquery/themeswitchertool.js"></script> -->
+
+    </head>
+    <body>
+
+        <div id="mentornotas-wrapper">
+            <div id="mentornotas-header">
+                <div style="float: left;">
+                    <a href="">
+                        <img src="images/mentor.png" alt="mentornotas"/>
+                    </a>
+                </div>
+                <div style="text-align: center; font-style: italic">
+                    <h1>MentorNotas</h1>
+                    <h2>tu block de notas inteligente</h2>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="mentornotas-content-login">
+
+                <h1>Login</h1>
+
+                <div>
+                    <div class="error">Bad credentials</div>
+
+                    <form action="" method="post" id="login">
+                        <div>
+                            <label for="username">E-mail</label>
+                            <input type="text" id="username" name="_username" value="" />
+                        </div>
+
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="" />
+                        </div>
+
+                        <input type="submit" class="mentornotas-button-grey" value="LOGIN" />
+                    </form>
+                </div>
+
+            </div>
+            <ul id="menu">
+                <li>¿Aún no tienes una cuenta? <a href="">¡Registrate!</a></li>
+            </ul>
+        </div>
+    </body>
+</html>

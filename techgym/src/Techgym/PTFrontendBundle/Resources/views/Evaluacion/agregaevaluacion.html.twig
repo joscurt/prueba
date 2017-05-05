@@ -1,0 +1,162 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!--<link href="{{ asset('bundles/techgymptfrontend/css/main.css') }}" rel="stylesheet">-->
+
+{% endblock %}
+
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}   
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+
+
+    <div class="row">
+        <div class="col-md-6">
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success">
+                    <b>Hecho!,</b>{{ flashMessage }}
+                    <button type="button" class="close" data-dismiss="alert">×</button></div>
+                {% endfor %}  
+
+
+
+            <div class="block">
+                <div class="header">
+
+                    <h2 class="title"><span class="fa fa-pencil"></span>Agregar Evaluación  -  {{ user.nombre }} {{ user.apellidos }}</h2>
+                </div>
+
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'role' : 'form'}}) }}
+
+                {% if form_errors(form) %}
+                    <div class="error">{{ form_errors(form) }}</div>
+                {% endif %}
+
+                <div class="content controls">
+                    {% if form_errors(form.edad ) %}
+                        <div class="error">{{ form_errors(form.edad ) }}</div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Edad:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    {{ form_widget(form.edad,{'value':('now'|date('Y') - user.fechanac|date('Y') - 1) + ('now'|date('2010-m-d')|date('U') - user.fechanac|date('2010-m-d')|date('U') >= 0 ? 1 : 0) }) }}
+                            </div></div></div>
+
+                    {% if form_errors(form.estatura ) %}
+                        <div class="error">{{ form_errors(form.estatura ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Estatura:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    {{ form_widget(form.estatura) }}
+                            </div> </div></div>
+
+                    {% if form_errors(form.peso ) %}
+                        <div class="error">{{ form_errors(form.peso ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Peso:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-users fa" aria-hidden="true"></i>
+                                </span>{{ form_widget(form.peso) }}
+                            </div> </div></div>
+                       <div class="form-row">
+                            <div class="col-md-3">Imagen:</div>
+                            <div class="col-md-9">
+                                <div class="input-group file">
+                                  <span class="input-group-addon">
+                                       <i class="icon-camera"></i>
+                                    </span>
+                                    <input type="text" class="">   
+                                    {{ form_widget(form.imageneva) }}<span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button">Buscar</button>
+                                    </span>
+                                </div> </div></div>
+                            
+                            
+                            
+                            
+                    {% if form_errors(form.pliegue_triceps ) %}
+                        <div class="error">{{ form_errors(form.pliegue_triceps ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Pliegue Triceps:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                 <i class="fa fa-calculator" aria-hidden="true"></i>
+                                </span>{{ form_widget(form.pliegue_triceps) }}
+                            </div> </div></div>
+
+                    {% if form_errors(form.pliegue_biceps ) %}
+                        <div class="error">
+                            {{ form_errors(form.pliegue_biceps ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Pliegue Bicep:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <i class="fa fa-calculator" aria-hidden="true"></i>
+                                </span>{{ form_widget(form.pliegue_biceps) }}
+                            </div> </div></div>
+
+
+
+                    {% if form_errors(form.pliegue_subescapular ) %}
+                        <div class="error">
+                            {{ form_errors(form.pliegue_subescapular ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Pliegue Subescapular:</div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <i class="fa fa-calculator" aria-hidden="true"></i>
+                                </span>{{ form_widget(form.pliegue_subescapular) }}
+                            </div> </div></div>
+
+                    {% if form_errors(form.pliegue_suprailiaco ) %}
+                        <div class="error">
+                            {{ form_errors(form.pliegue_suprailiaco ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Pliegue Suprailiaco:</div>
+                        <div class="col-md-9">
+                            <div style="margin-bottom:15px;" class="input-group">
+                                <span class="input-group-addon">
+                                 <i class="fa fa-calculator" aria-hidden="true"></i>
+                                </span>{{ form_widget(form.pliegue_suprailiaco) }}
+                            </div> 
+                         {{ form_rest(form) }}<input id="fat-btn"type="submit" data-loading-text="Loading..." class="btn" value="Confirmar" />
+                        
+                        </div></div>
+                         
+  
+                         
+
+
+
+
+                </div>
+                </form></div>
+        </div>
+
+    </div> 
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}  
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %}  
+    <!--{% if app.user %}
+        {{ app.user.username }}
+        {{ app.user.imagenpt }}si esta Logueado
+    {% else %}
+        # user is not logged in
+    {% endif %}-->
+
+    <div class="col-md-5">
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesCorrectos.html.twig' %} 
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesNoCorrectos.html.twig' %}  
+ {{ parent() }}
+            {% include 'TechgymPTFrontendBundle:Login:estalum.html.twig' %} 
+            
+            <div class="block block-drop-shadow">
+            <div class="header">
+                <h2>Últimas Evaluaciones</h2>
+            </div>
+            
+            <div class="content content-transparent np">
+                <div class="list list-contacts">
+                   
+                    {% for a in user3|slice(0, 7)  %}
+                        
+                    <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ a.alumno.id }}" class="list-item">                                
+                        <div class="list-info">
+                            <img src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ a.alumno.imagenalumno) }}" class="img-circle img-thumbnail">
+                        </div>                                                            
+                        <div class="list-text">
+                            <span class="list-text-name">
+                        
+                            {{a.alumno.nombre}}&nbsp;{{a.alumno.apellidos}}
+                            </span>
+                            <div class="list-text-info"><b>Peso:</b> {{a.peso}}kg  &nbsp; <b>Porcentaje de Grasa:</b> {{a.pgrasa|number_format(1, ',', ',')}}% &nbsp; <b>IMC:</b> {{a.imc|number_format(0, ',', ',')}}&nbsp; <b>Estatura:</b> {{a.estatura}}cm</div>
+                        </div>                                
+                    </a>
+                        
+                       {%endfor%}   
+                      
+                </div>                        
+            </div>   
+                       
+        </div>
+            
+        </div> 
+    
+    <div class="col-md-5">
+              <div class="block block-drop-shadow">
+                   {{ parent() }}
+            {% include 'TechgymPTFrontendBundle:Login:estalum.html_1.twig' %}
+              </div>
+              </div>
+    </div>
+{% endblock %}

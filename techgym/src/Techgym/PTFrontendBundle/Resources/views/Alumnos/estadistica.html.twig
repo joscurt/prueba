@@ -1,0 +1,324 @@
+{% block body %}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        $(document).ready(function () {
+            chart = new Highcharts.Chart({
+                chart: {
+                    type: 'spline',
+                    renderTo: 'container',
+                    zoomType: 'x'
+                },
+                plotOptions: {
+                    spline: {
+                        lineWidth: 4,
+                        states: {
+                            hover: {
+                                lineWidth: 5
+                            }
+                        }}},
+                lang: {
+                    loading: "Loading...",
+                    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                    shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    weekdays: ["Sunday", "Monday", "Tuesday", "Miércoles", "Thursday", "Friday", "Saturday"],
+                },
+                title: {
+                    text: '',
+                    align: 'left',
+                    x: 70
+                },
+                yAxis: {
+                    title: {text: 'Peso (Kg)'},
+                    type: 'double',
+                    min: 0
+                },
+                tooltip: {
+                    valueSuffix: 'Kg',
+                    shared: true
+
+                },
+                legend: {
+                    symbolHeight: 0,
+                    symbolWidth: 0,
+                    symbolRadius: 0,
+                    useHTML: true,
+                    labelFormatter: function () {
+                        return '<div class="wrapper2"><div class="square" style="background: ' + this.color + '"></div><div class="label">' + this.name + '</div></div>';
+                    }},
+                xAxis: {
+                    type: 'datetime',
+                    labels: {
+                        formatter: function () {
+                            return Highcharts.dateFormat('%b', this.value);
+                        },
+                        dateTimeLabelFormats: {
+                            minute: '%H:%M',
+                            hour: '%H:%M',
+                            day: '%e. %b',
+                            week: '%e. %b',
+                            month: '%b \'%y',
+                            year: '%Y'
+                        }
+                    }
+                },
+                series: [{
+                        name: 'Peso',
+                        data: []
+                    }, {
+                        name: 'Peso Grasa',
+                        data: []
+                    }, {
+                        name: 'Peso Magro',
+                        data: []
+                    }]
+
+            });
+
+            chart.series[0].setData([
+        {%for a in alumnoe%}
+                    [Date.UTC({{a.creacioneva | date('Y, m-1, d')|default('-')}}), {{ a.peso|number_format(0, ',', ',')|default('-') }}],
+        {%endfor%}
+                ]);
+
+                chart.series[1].setData([
+        {%for a in alumnoe%}
+                    [Date.UTC({{a.creacioneva | date('Y, m-1, d')|default('-')}}), {{ a.pesoGrasa|number_format(0, ',', ',')|default('-') }}],
+        {%endfor%}
+                ]);
+                chart.series[2].setData([
+        {%for a in alumnoe%}
+                    [Date.UTC({{a.creacioneva | date('Y, m-1, d')|default('-')}}), {{ a.pesoMagro|number_format(0, ',', ',')|default('-') }}],
+        {%endfor%}
+                ]);
+            });
+    </script>
+
+    <script>
+        jQuery(document).on('moduleTabContent', 'moduleTabContent', function () {
+            $('.chart').each(function () {
+                $(this).highcharts().reflow();
+            });
+        });
+        $(function () {
+            $('#chart').highcharts({
+                chart: {
+                    type: 'column',
+                    events: {
+                        load: function (event) {
+                            event.target.reflow();
+                        }
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: [
+        {%for a in alumnoe%}
+                            '{{a.creacioneva | date('Y, m, d')|default('-')}}',
+        {%endfor%}
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Peso(%)'
+                        }
+                    },
+                    legend: {
+                    symbolHeight: 0,
+                    symbolWidth: 0,
+                    symbolRadius: 0,
+                    useHTML: true,
+                    labelFormatter: function () {
+                        return '<div class="wrapper2"><div class="square" style="background: ' + this.color + '"></div><div class="label">' + this.name + '</div></div>';
+                    }},
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.1,
+                            borderWidth: 1
+                        }
+                    },
+                    series: [{
+                            name: 'IMC',
+                            data: [{%for a in alumnoe%}{{ a.IMC|number_format(0, ',', ',')|default('-') }},{%endfor%} ]
+
+                        }, {
+                            name: '% Grasa',
+                            data: [{%for a in alumnoe%}{{ a.pGrasa|number_format(0, ',', ',')|default('-') }},{%endfor%} ]
+
+                        }, {
+                            name: '% Masa Magra',
+                            data: [{%for a in alumnoe%}100 -{{ a.pGrasa|number_format(0, ',', ',')|default('-') }} ,{%endfor%} ]
+
+                        }]
+                });
+            });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            chart = new Highcharts.Chart({
+                chart: {
+                    type: 'spline',
+                    renderTo: 'pliegues',
+                    zoomType: 'x'
+                },
+                lang: {
+                    loading: "Loading...",
+                    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                    shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    weekdays: ["Sunday", "Monday", "Tuesday", "Miércoles", "Thursday", "Friday", "Saturday"],
+                },
+                title: {
+                    text: '',
+                    align: 'left',
+                    x: 70
+                },
+                yAxis: {
+                    title: {text: 'Pliegues (mm)'},
+                    type: 'double',
+                    min: 0
+                },
+                tooltip: {
+                    
+                    valueSuffix: 'mm',
+                    shared: true
+
+                },
+                plotOptions: {
+                    spline: {
+                        lineWidth: 4,
+                        states: {
+                            hover: {
+                                lineWidth: 5
+                            }
+                        }}},
+                legend: {
+                    symbolHeight: 0,
+                    symbolWidth: 0,
+                    symbolRadius: 0,
+                    useHTML: true,
+                    labelFormatter: function () {
+                        return '<div class="wrapper2"><div class="square" style="background: ' + this.color + '"></div><div class="label">' + this.name + '</div></div>';
+                    }},
+                xAxis: {
+                    type: 'datetime',
+                    labels: {
+                        formatter: function () {
+                            return Highcharts.dateFormat('%b', this.value);
+                        },
+                        dateTimeLabelFormats: {
+                            minute: '%H:%M',
+                            hour: '%H:%M',
+                            day: '%e. %b',
+                            week: '%e. %b',
+                            month: '%b \'%y',
+                            year: '%Y'
+                        }
+                    }
+                },
+                series: [{
+                        name: 'Pliegue Triceps',
+                        data: []
+                    }, {
+                        name: 'Pliegue Bicep',
+                        data: []
+                    },
+                    {
+                        name: 'Pliegue Suprailíaco',
+                        data: []
+                    }, {
+                        name: 'Pliegue Subescapular',
+                        data: []
+                    }]
+
+            });
+
+            chart.series[0].setData([
+        {%for a in alumnoe%}
+                    [Date.UTC({{a.creacioneva | date('Y, m-1, d')|default('-')}}), {{ a.pliegueTriceps|number_format(0, ',', ',')|default('-') }}],
+        {%endfor%}
+                ]);
+
+                chart.series[1].setData([
+        {%for a in alumnoe%}
+                    [Date.UTC({{a.creacioneva | date('Y, m-1, d')|default('-')}}), {{ a.pliegueBiceps|number_format(0, ',', ',')|default('-') }}],
+        {%endfor%}
+                ]);
+                chart.series[2].setData([
+        {%for a in alumnoe%}
+                    [Date.UTC({{a.creacioneva | date('Y, m-1, d')|default('-')}}), {{ a.pliegueSuprailiaco|number_format(0, ',', ',')|default('-') }}],
+        {%endfor%}
+                ]);
+                chart.series[3].setData([
+        {%for a in alumnoe%}
+                    [Date.UTC({{a.creacioneva | date('Y, m-1, d')|default('-')}}), {{ a.pliegueSubescapular|number_format(0, ',', ',')|default('-') }}],
+        {%endfor%}
+                ]);
+            });
+    </script>
+
+
+
+    <div class="clearfix"></div>
+    <div class="col-md-12">
+        <div class="bbModuleContainer rich trackingSummary">
+            <div style="margin-bottom: 15px;"class="moduleTitle">
+                <div class="title">Estadísticas</div>
+                <div class="moduleActionContainer">
+
+                </div>
+            </div>
+            <div class="content">
+                <div>
+                    <div>
+                        <div class="bbModuleContainerTabbed bbBinder" data-action="{&quot;method&quot;:&quot;init&quot;,&quot;ns&quot;:&quot;BB.UI.Tabs&quot;}">
+                            <div class="moduleTabs nav nav-tabs" role="tablist">
+
+                                <div class="tab active">
+                                    <div><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Historial de Peso</a></div>
+                                </div>
+                                <div class="tab">
+                                    <div>Porcentaje de Composición Corporal</div>
+                                </div>
+                                <div class="tab">
+                                    <div>Pliegues MM</div>
+                                </div>
+                            </div>
+                            <div class="moduleContent tab-content">
+                                <div class="moduleTabContent active">
+                                    <div id="container" style="height: 400px;width:100%;"></div>  
+                                </div>
+                                <div class="moduleTabContent">
+                                    <div role="tabpanel" class="tab-pane" id="messages"><div id="chart" style="height: 400px;"></div> </div> 
+                                </div>
+                                <div class="moduleTabContent">
+                                    <div role="tabpanel" class="tab-pane" id="messages"><div id="pliegues" style="height: 400px;"></div> </div> 
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- deprecate socialFooter class -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+

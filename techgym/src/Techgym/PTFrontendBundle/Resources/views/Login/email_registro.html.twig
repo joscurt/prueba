@@ -1,0 +1,10 @@
+Hola {{ usuario.nombre }} {{ usuario.apellidos }},
+
+Tú o alguien ha creado una cuenta en la aplicación MentorNotas.
+
+Si quieres activarla sigue este enlace:
+
+
+{{ url("techgym_pt_activar_cuenta_alumno", {"token": usuario.tokenRegistro}) }}
+
+Un saludo!

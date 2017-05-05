@@ -1,0 +1,50 @@
+{% block body %}
+
+    {% block stylesheets %}    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        
+ <link rel="stylesheet" type="text/css" href={{ asset('bundles/techgymptfrontend/css/clock.css')}} />
+
+    {% endblock %}
+
+
+       
+    <table class="table table-striped">
+<thead>
+                            <tr> 
+                                <th style="text-align: center;">Id</th>
+                                <th style="text-align: center;">Nombre</th>                                                    
+                                <th style="text-align: center;">codigo</th>
+                                <th style="text-align: center;">descripcion</th>
+                                <th style="text-align: center;" >categoria</th>                                     
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {% for productos in producto %}
+                            <tr>
+                                <td>
+                                           {{productos.id}}                             
+                                </td>
+                                <td>
+                                           {{productos.nombre}}                             
+                                </td>
+                                <td>
+                                           {{productos.codigo}} 
+                                          
+                                </td>
+                                <td>
+                                           {{productos.descripcion}}                             
+                                </td>
+                                <td>
+                                           {{productos.categoria}}                             
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        <tbody>
+    </table>
+
+
+
+
+{% endblock %}

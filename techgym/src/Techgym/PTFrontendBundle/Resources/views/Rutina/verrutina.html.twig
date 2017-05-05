@@ -1,0 +1,87 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+    <div class="row">
+        <div class="col-md-10">
+
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesCorrectos.html.twig' %} 
+            {% include 'TechgymPTFrontendBundle:Mensajes:MensajesNoCorrectos.html.twig' %}   
+
+            <div class="block">
+                <div class="header">
+                    <h2>{{alumno3.nombre}}</h2>
+                </div>
+
+                <div class="content">
+                    <div class="form-row">
+                        
+                    </div>
+                    <br />
+                    <table class="table table-bordered table-striped sortable_simple dataTable" id="DataTables_Table_0" style="width: 100%;"  cellspacing="5" cellpadding="10">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h5>Día</h5>
+                                </td>
+                                <td>
+                                    <h5>ID</h5>
+                                </td>
+                                <td>
+                                    <h5>Ejercicio</h5>
+                                </td>
+                                <td>
+                                    <h5>Series</h5>
+                                </td>
+                                <td>
+                                    <h5>Repeticiones</h5>
+                                </td>
+                            </tr>
+                            {% for rut in rutina|slice(0, 6) %}
+                            
+                            <tr>
+                                <td>Día 1</td>
+                                <td>{{rut.id}}</td>
+                                <td><a title="Machine Chest Press" href="http://elitemensguide.com/videos/machine-chest-press/">{{rut.nombre}}</a></td>
+                                
+                                <td>{{rut.series}}</td>
+                                <td>{{rut.repeticiones}}</td>
+                            </tr>
+                            {% endfor %}
+                            {% for rut in rutina|slice(6, 5) %}
+                            
+                            <tr>
+                                <td>Día 2</td>
+                                <td>{{rut.id}}</td>
+                                <td><a title="Machine Chest Press" href="http://elitemensguide.com/videos/machine-chest-press/">{{rut.nombre}}</a></td>
+                                
+                                <td>{{rut.series}}</td>
+                                <td>{{rut.repeticiones}}</td>
+                            </tr>
+                            {% endfor %}
+                            {% for rut in rutina|slice(11, 5) %}
+                            
+                            <tr>
+                                <td>Día 3</td>
+                                <td>{{rut.id}}</td>
+                                <td><a title="Machine Chest Press" href="http://elitemensguide.com/videos/machine-chest-press/">{{rut.nombre}}</a></td>
+                                
+                                <td>{{rut.series}}</td>
+                                <td>{{rut.repeticiones}}</td>
+                            </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script type='text/javascript' src="{{asset('bundles/techgymptfrontend/js/borrar.js')}}"></script>  
+{% endblock %}

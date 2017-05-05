@@ -1,0 +1,38 @@
+<div class="head bg-default bg-light-rtl">
+                <h2>Últimos alumno ingresados</h2>
+                <div class="side pull-right">                            
+                    <ul class="buttons">                                
+                        <li><a href="{{ path('techgym_pt_frontend_alumnos') }}"><span class="icon-plus"></span></a></li>
+                        <li><a href="#"><span class="icon-cogs"></span></a></li>
+                    </ul>
+                </div> 
+
+            </div>
+            <div class="content list">
+               <!-- {% set arr_size = user2|length %}
+                {{arr_size}}-->
+
+                
+                {% for alumno in user2|slice(0, 13) %}
+                    <div class="list-item">
+                        <div class="list-datetime">
+                            <div class="date">{{ alumno.creacionalum | date('d.m') }}</div>
+                            <div class="time">{{ alumno.creacionalum | date('Y') }}</div>
+                        </div>
+                        <div class="list-info">
+                            <img src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ alumno.imagenalumno) }}" class="img-circle img-thumbnail"/>
+                        </div>
+                        <div class="list-text">
+                            <a href="{{ path('techgym_pt_frontend_alumnos') }}/{{ alumno.id }}" class="list-text-name">{{ alumno.nombre }} {{ alumno.apellidos }}</a>
+                            <p><div class="list-text-info"><i class="icon-envelope"></i> <a href="mailto:{{ alumno.email }}">{{ alumno.email }}</a> &nbsp;<i class="icon-phone"></i>&nbsp;{{ alumno.celular|default('-') }} <i class="icon-home"></i> {{ alumno.gimnasio|default('-') }}</div></p>
+                        </div>
+                        <div class="list-controls">
+                            <a href="{{path('techgym_pt_frontend_alumno_editar', { id:alumno.id })}}" class="widget-icon widget-icon-circle"><span class="icon-edit"></span></a>
+                            <a href="{{path('techgym_pt_frontend_ver_evaluacion', { id:alumno.id })}}" class="widget-icon widget-icon-circle"><span class="icon-file-text-alt"></span></a>
+                            <a href="#" class="widget-icon widget-icon-circle"><span class="icon-remove"></span></a>
+                        </div>                            
+                    </div>
+                {%endfor%}</div>
+                <div class="footer tac">
+                        <a style="text-shadow:1px 1px 1px rgba(0,0,0,0.5);" href="{{ path('techgym_pt_frontend_alumnos') }}">Ver más Alumnos...</a>
+                    </div>

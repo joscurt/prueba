@@ -1,0 +1,15 @@
+{% extends 'TechgymPTFrontendBundle::baseLOGIN.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/techgymptfrontend/css/login.css') }}" rel="stylesheet">
+
+{% endblock %} 
+
+
+{% block body %}
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'TechgymPTFrontendBundle::base2.html.twig' %}
+
+
+{% block javascripts %}
+{{ parent()}}
+<script type="text/javascript" src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/jquery-migrate.min.js')}}></script>
+    <script type="text/javascript" src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/globalize.js')}}></script>    
+    <script type="text/javascript" src={{ asset('bundles/techgymptfrontend/js/plugins/bootstrap/bootstrap.min.js')}}></script>
+    
+    <script type="text/javascript" src={{ asset('bundles/techgymptfrontend/js/plugins/uniform/jquery.uniform.min.js')}}></script>
+    <script type="text/javascript" src={{ asset('bundles/techgymptfrontend/js/plugins/select2/select2.min.js')}}></script>
+    <script type="text/javascript" src={{ asset('bundles/techgymptfrontend/js/plugins/tagsinput/jquery.tagsinput.min.js')}}></script>
+
+<script>
+$(document).ready(function(){
+ 
+      $("#agenda_fecha_date").addClass("datepicker form-control");
+      $("#agenda_fecha_time").addClass("timepicker");
+$("#agenda_fecha").addClass("datetimepicker form-control");
+
+    
+    
+});
+</script>
+{%endblock%}
+{% block stylesheets %}
+    {{ parent() }}
+    <!--<link href="{{ asset('bundles/techgymptfrontend/css/main.css') }}" rel="stylesheet">-->
+
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="">
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success">
+                    <b>Hecho!,</b>{{ flashMessage }}
+                    <button type="button" class="close" data-dismiss="alert">×</button></div>
+                {% endfor %}  
+
+         
+            <div class="block">
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'role' : 'form', 'action' : path('techgym_agenda')}}) }}
+
+                {% if form_errors(form) %}
+                    <div class="error">{{ form_errors(form) }}</div>
+                {% endif %}
+
+               
+               
+               {{ form_rest(form) }}<div class="modal-footer">  
+                                <input id="fat-btn" type="submit" data-loading-text="Loading..." class="btn btn-success btn-clean" value="Confirmar" />
+                                
+                            </div>
+               {{form_end(form)}}
+                </div>
+        </div>
+
+    </div> 
+
+{% endblock %}

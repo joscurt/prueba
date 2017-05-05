@@ -1,0 +1,157 @@
+{% extends 'TechgymPTFrontendBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!--<link href="{{ asset('bundles/techgymptfrontend/css/main.css') }}" rel="stylesheet">-->
+
+{% endblock %}
+
+{% block body %}
+    {% include 'TechgymPTFrontendBundle:Login:menu.html.twig' %}   
+    {% include 'TechgymPTFrontendBundle:Login:sidebar.html.twig' %} 
+
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="block">
+                <div class="header">
+                    <h2 class="title">Registro de Producto</h2>
+
+                </div>
+
+                <form class="form-horizontal" novalidate="true" action="{{ path("techgym_producto") }}"{{form_enctype(form)}} 
+                      method="post" id="login">
+
+                    {% if form_errors(form) %}
+                        <div class="error">{{ form_errors(form) }}</div>
+                    {% endif %}
+
+                    <div class="content controls">
+                        {% if form_errors(form.nombre ) %}
+                            <div class="error">{{ form_errors(form.nombre ) }}</div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Nombre del Producto:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+
+                                        <i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        {{ form_widget(form.nombre) }}
+                                </div></div></div>
+
+                        {% if form_errors(form.codigo ) %}
+                            <div class="error">{{ form_errors(form.codigo ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Código:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        {{ form_widget(form.codigo) }}
+                                </div> </div></div>
+
+                        {% if form_errors(form.descripcion ) %}
+                            <div class="error">{{ form_errors(form.descripcion ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Descripción:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-users fa" aria-hidden="true"></i>
+                                    </span>{{ form_widget(form.descripcion) }}
+                                </div> </div></div>
+
+                        {% if form_errors(form.colores ) %}
+                            <div class="error">{{ form_errors(form.colores ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Colores:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                                    </span>{{ form_widget(form.colores) }}
+                                </div> </div></div>
+
+                                 {% if form_errors(form.categoria ) %}
+                            <div class="error">{{ form_errors(form.categoria ) }}
+                            </div>
+                        {%endif%}
+                                
+                       <div class="form-row">
+                            <div class="col-md-3">Categoria:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-venus-mars" aria-hidden="true"></i>
+                                    </span>{{ form_widget(form.categoria) }}
+                                </div> </div></div>
+
+                        {% if form_errors(form.imagen ) %}
+                            <div class="error">
+                                {{ form_errors(form.imagen ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Imagen:</div>
+                            <div class="col-md-9">
+                                <div class="input-group file">
+                                  <span class="input-group-addon">
+                                       <i class="icon-camera"></i>
+                                    </span>
+                                    <input type="text" class="">   
+                                    {{ form_widget(form.imagen) }}<span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button">Buscar</button>
+                                    </span>
+                                </div> </div></div>
+
+                                        
+                         {% if form_errors(form.subcategoria) %}
+                            <div class="error">
+                                {{ form_errors(form.subcategoria ) }}
+                            </div>
+                        {%endif%}
+                        <div class="form-row">
+                            <div class="col-md-3">Subcategoría:</div>
+                            <div class="col-md-9">
+                                <div class="input-group file">
+                                  <span class="input-group-addon">
+                                      <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                                    </span>
+                                    
+                                    {{ form_widget(form.subcategoria) }}
+                                </div> </div></div>               
+                                 {% if form_errors(form.modelos ) %}
+                        <div class="error">
+                            {{ form_errors(form.modelos ) }}
+                        </div>
+                    {%endif%}
+                    <div class="form-row">
+                        <div class="col-md-3">Celular:</div>
+                        <div class="col-md-9">
+                            <div class="input-group file">
+                                <span class="input-group-addon">
+                                   <i class=""></i>
+                                </span>
+
+                                {{ form_widget(form.modelos) }}
+                            </div> </div></div> 
+                                                        
+              
+                            <input id="fat-btn"type="submit" data-loading-text="Loading..." class="btn" value="Confirmar" />
+                            </div></div>
+
+                        {{ form_rest(form) }}
+                        
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}{# empty Twig template #}

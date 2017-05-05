@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Bienvenidos!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+            <!-- Latest compiled and minified CSS -->
+            <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+            <!-- Optional theme -->
+            <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+            <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">  
+            <link href="{{ asset('bundles/techgymptfrontend/css/template.css') }}" rel="stylesheet">
+            <link href="{{ asset('bundles/techgymptfrontend/css/cropper.min.css') }}" rel='stylesheet' type='text/css'>
+        {% endblock %}
+        {% block javascripts %}
+            <!-- Latest compiled and minified JavaScript -->
+            <!--<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+            <script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/jquery.min.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/jquery-ui.min.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/jquery-migrate.min.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/globalize.js') }}></script>    
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/bootstrap/bootstrap.min.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/uniform/jquery.uniform.min.js') }}></script>
+
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/knob/jquery.knob.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/sparkline/jquery.sparkline.min.js') }}></script>
+
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/flot/jquery.flot.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/flot/jquery.flot.pie.js') }}></script>    
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/flot/jquery.flot.resize.js') }}></script>
+            
+           <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/plugins/datatables/jquery.dataTables.min.js')}}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/bootbox.min.js') }}></script>
+              <script type="text/javascript" src={{ asset('bundles/techgymptfrontend/js/plugins/jquery/jquery-ui-timepicker-addon.js') }}></script>
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/actions.js') }} ></script> 
+            <script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/charts.js') }}></script>
+            <!--<script type='text/javascript' src={{ asset('bundles/techgymptfrontend/js/settings.js') }}></script>   -->
+           <!-- <script type='text/javascript' src="http://localhost/techgym/assets/js/cropper.min.js"></script> 
+            <script type='text/javascript' src="http://localhost/techgym/assets/js/demo_edit_profile.js"></script>
+            <script type='text/javascript' src="http://localhost/techgym/assets/js/jquery.form.js"></script> -->
+   
+
+
+        {% endblock %}
+    </head>
+    <body class="wall-num15">
+        <div class="container">
+            {% block body %}     
+            {% endblock %} 
+        </div>
+    </body>
+    
+</html>

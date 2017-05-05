@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="en" />
+
+        <title>Layout para la aplicación MentorNotas</title>
+
+        <link rel="stylesheet" type="text/css" href="../vendors/jquery-layout/css/layout-default-latest.css" />
+        <link rel="stylesheet" type="text/css" href="../vendors/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" />
+        <link rel="stylesheet" type="text/css" href="../vendors/CLEditor1_3_0/jquery.cleditor.css" />
+        <link rel="stylesheet" type="text/css" href="../vendors/tagit/css/jquery.ui.autocomplete.custom.css" />
+        
+        
+        <link rel="stylesheet" type="text/css" href="../src/css/ui.css" />
+        <link rel="stylesheet" type="text/css" href="../src/css/ui-forms.css" />
+
+        <!-- REQUIRED scripts for layout widget -->
+        <script type="text/javascript" src="../vendors/jquery/js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="../vendors/jquery/js/jquery-ui-1.8.17.custom.min.js"></script>
+        <script type="text/javascript" src="../vendors/CLEditor1_3_0/jquery.cleditor.min.js"></script>
+        <script type="text/javascript" src="../vendors/tagit/js/tag-it.js"></script>
+        
+
+        <!-- <script type="text/javascript" src="vendors/jquery/themeswitchertool.js"></script> -->
+
+        <script>
+            
+            $(document).ready( function() {
+                
+                
+                var tituloBox = $("#nota_titulo");  
+                
+                $( "#btn_hecho" ).button({                    
+                    icons: {
+                        primary: "ui-icon-disk"
+                    }
+                });
+                
+                $( "#btn_cancelar" ).button({                    
+                    icons: {
+                        primary: "ui-icon-cancel"
+                    }
+                });
+                
+                $( "#btn_borrar" ).button({                    
+                    icons: {
+                        primary: "ui-icon-trash"
+                    }
+                });
+                
+                
+                $( "#nota_fecha" ).datepicker({
+                    showOn: "button",
+                    buttonImage: "images/calendar.gif",
+                    //buttonImageOnly: false,
+                    dateFormat: 'dd-mm-yy',
+                    altFormat: 'dd-mm-yy',
+                    autoSize: true
+                });
+                
+                $( "#nota_fecha" ).datepicker('setDate', new Date());
+                
+                $("#nota_etiquetas").tagit({
+			availableTags: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby", "python", "c", "scala", "groovy", "haskell", "perl"],
+                        itemName: 'item',
+			fieldName: 'tags'
+                });
+                
+                
+                var tituloBox1Default = "Escribe el título ...";  
+                                    
+                tituloBox.attr("value", tituloBox1Default);
+                tituloBox.focus(function(){  
+                    if($(this).attr("value") == tituloBox1Default) $(this).attr("value", ""); 
+                    $(this).addClass("nota-titulo-activo");
+                });  
+                
+                tituloBox.blur(function(){  
+                    $(this).removeClass("nota-titulo-activo");
+                    
+                        
+                });  
+                
+                $("#nota_contenido").cleditor({
+                    controls: "bold italic underline strikethrough subscript superscript | font size " +
+                        "style | color highlight removeformat | bullets numbering | outdent " +
+                        "indent | alignleft center alignright justify | undo redo | " +
+                        "rule image link unlink  | print source"
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+
+        <div class="ui-layout-east">
+            <h3 class="ui-widget-header">Añadir Nota</h3>
+
+            <div class="ui-widget my-widget">
+                <div class="ui-widget-content my-widget-content">  
+                    <span class="my-buttonset-left">
+                        <button id="btn_hecho">hecho</button>
+                    </span>
+
+                    <span class="my-buttonset-right">                  
+                        <button id="btn_cancelar">cancelar</button>
+                        <button id="btn_borrar">borrar</button>
+                    </span>
+                </div>
+            </div> 
+
+            <div style="padding: 10px;"></div>
+
+            <div class="ui-layout-content ui-widget my-widget">
+                <div class="ui-widget-content my-widget-content">  
+
+                    <form action="" method="post">
+
+                        <div class="row">
+                            <span class="row-titulo">
+                                <!--<div class="ui-state-error">Campo requerido</div>-->
+                                <input style="width: 300px;" id="nota_titulo" class="nota-titulo ui-corner-all" size="40" type="text" required="true" value="Escribe el título de la nota ..." />
+                            </span>
+                            <span class="row-fecha">
+                                <input type="text" id="nota_fecha" />
+                            </span>
+                        </div>
+                        
+                        <div class="row">
+                            <span style="font-size: small">Etiquetas:</span>
+                            <ul id="nota_etiquetas">
+                                <li>kaka</li>
+                                <li>keke</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="row">
+                            
+                            <textarea id="nota_contenido" class="titulo ui-corner-all" ></textarea>
+                        </div>
+
+                        <div class="upload">
+                            <input id="nota_fichero" type="file" name="archivo"/>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

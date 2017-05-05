@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% block body %}
+    <div class="col-md-2">
+
+        <div class="block block-drop-shadow">
+            <div class="user bg-default bg-light-rtl">
+                <div class="info">                                                                                
+                    <a style="color:#fff;"href="#" class="informer informer-three">
+                        <span>{{app.user.username}}</span>
+                        Username
+                    </a>                            
+                    <a style="color:#fff;" href="#" class="informer informer-four">
+                        <span>{{"now" | date('d/m/y')}}</span>
+                        Fecha
+                    </a>                                                      
+                    <img src="{{ asset('bundles/techgymptfrontend/imagenes/' ~ app.user.imagenpt) }}" class="img-circle img-thumbnail">
+                </div>
+            </div>
+            <div class="content list-group list-group-icons">
+                <a href="{{path('techgym_prueba') }}" class="list-group-item"><span class="icon-user"></span>Mi perfil<i class="icon-angle-right pull-right"></i></a>
+                <a href="{{path('techgym_agenda_calendario') }}" class="list-group-item"><span class="icon-calendar"></span>Mi Calendario<i class="icon-angle-right pull-right"></i></a>
+                <a href="sample_profile.html" class="list-group-item"><span class="icon-cogs"></span>Editar<i class="icon-angle-right pull-right"></i></a>
+                <a href="{{path('techgym_pt_logout') }}" class="list-group-item"><span class="icon-off"></span>Logout<i class="icon-angle-right pull-right"></i></a>
+                
+            
+            </div>
+        </div> 
+        
+        <div class="form-row">
+                
+                    <a href="#modal_default_2" data-toggle="modal" class="btn btn-default btn-block btn-clean">Agendar Alumno</a>
+                
+
+            </div>  
+
+                <div class="modal" id="modal_default_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Agenda a Alumno</h4>
+                            </div>
+                            <div class="modal-body clearfix">
+
+                              
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>     
+                 
+            
+{{ render(controller('TechgymPTFrontendBundle:Agenda:agendaVer')) }}            
+        <!--{% include 'TechgymPTFrontendBundle:Login:sideesta.html.twig' %}  -->
+
+        
+
+    </div>
+{% endblock %}
